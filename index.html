@@ -41,14 +41,14 @@
   </header>
 
   <section class="grid">
-    <article class="card span-4"><div class="sub">确认问题 / 待确认项</div><div class="kpi">19</div><div>P0 2 · P1 12 · P2 5</div></article>
+    <article class="card span-4"><div class="sub">有效问题 / 待确认项</div><div class="kpi">9</div><div>P0 0 · P1 7 · P2 2 · 已忽略 10</div></article>
     <article class="card span-4"><div class="sub">本轮补齐的阻断检查</div><div class="kpi">4</div><div>标注端点回算 · 逐列对齐 · 裁切量 · 重复文本堆叠</div></article>
     <article class="card span-4"><div class="sub">尚未有实现证据</div><div class="kpi">3</div><div>初始空态 · 深色加载/到底 · 运行时代码 token</div></article>
 
     <article class="card span-12">
       <h2>结论先行</h2>
-      <div class="callout danger"><b>不能验收。</b> H5 在加载与到底态输出 <span class="mono">¥NaN</span>，且存在黑图；这两项属于数据/渲染故障。布局侧，Nano 三行“销量→价格”均多出约 10pt；H5 商品列从第 2 列起累计右移约 5/10/15pt，最右列隐藏量由设计约 9pt 增至约 32pt。</div>
-      <div class="callout"><b>深色 token 不是主观观感问题。</b> H5 面板底色实采 <span class="mono">#232323</span>，Figma 为 <span class="mono">#222222</span>；H5 价格实采约 <span class="mono">#EE7F59</span>，Figma 为 <span class="mono">#FF764D</span>，ΔE76 约 12.6。</div>
+      <div class="callout danger"><b>当前保留 9 项。</b> Nano 三行“销量→价格”均多出约 10pt；H5 浮层起点明显提前、下拉图标偏小，加载/到底态纵向节奏不一致，横滑视口右边界提前 20px。以上仍需处理或确认。</div>
+      <div class="callout"><b>本轮按评审意见忽略 10 项。</b> UI-01、UI-05、UI-09～UI-16 默认标记为“忽略”，卡片正文折叠但保留标题和状态，可随时恢复查看；这些项目不再计入有效问题与优先级统计。</div>
       <div class="callout"><b>Nano 深色“更多入口”底圈颜色错误。</b> Figma 截图估计约 <span class="mono">#535353</span>，实现约 <span class="mono">#353535</span>；实际父容器约 <span class="mono">#383838</span>，底圈反而更暗，圆形承托几乎消失。浅色模式底圈约 <span class="mono">#D4D4D4–#D5D5D5</span>，可判通过。</div>
       <div class="callout warn"><b>初始空态仍不能判实现通过。</b> Figma 初始空态已完整测量，但当前 8 张实现截图没有对应的“空列表 + 加载文案”画面；报告明确记为未检查，不再用刷新中或默认列表代替。</div>
     </article>
@@ -107,15 +107,15 @@
       <div class="table-scroll"><table>
         <thead><tr><th>元素</th><th>Figma token / 值</th><th>实现采样</th><th>ΔRGB / ΔE76</th><th>结果</th></tr></thead>
         <tbody>
-          <tr><td>H5 面板底色</td><td>panel_bg_white · #222222</td><td>中位/众数 #232323，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status issue">Issue · UI-09</td></tr>
+          <tr><td>H5 面板底色</td><td>panel_bg_white · #222222</td><td>中位/众数 #232323，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status adapt">已忽略 · UI-09</td></tr>
           <tr><td>H5 主文字</td><td>default_black100 · #FFFFFF</td><td>#FFFFFF，核心像素 n≥50</td><td>(0,0,0) / 0</td><td class="status pass">Pass</td></tr>
           <tr><td>H5 次文字</td><td>default_grey50 · #666666</td><td>#666666，核心像素 n≥50</td><td>(0,0,0) / 0</td><td class="status pass">Pass</td></tr>
-          <tr><td>H5 价格</td><td>orange100 · #FF764D</td><td>#ED7E58–#EE7F59，核心像素 n≥100</td><td>(-17,+9,+12) / 12.60</td><td class="status issue">Issue · UI-10</td></tr>
-          <tr><td>H5 分割线</td><td>渲染 #3D3D3D</td><td>#393939，n=5+线段</td><td>(-4,-4,-4) / 1.79</td><td class="status issue">Issue · UI-11</td></tr>
+          <tr><td>H5 价格</td><td>orange100 · #FF764D</td><td>#ED7E58–#EE7F59，核心像素 n≥100</td><td>(-17,+9,+12) / 12.60</td><td class="status adapt">已忽略 · UI-10</td></tr>
+          <tr><td>H5 分割线</td><td>渲染 #3D3D3D</td><td>#393939，n=5+线段</td><td>(-4,-4,-4) / 1.79</td><td class="status adapt">已忽略 · UI-11</td></tr>
           <tr><td>H5 下拉图标 tint</td><td>#FFFFFF</td><td>#FFFFFF，核心像素 n=20</td><td>(0,0,0) / 0</td><td class="status pass">颜色 Pass；尺寸 Issue</td></tr>
-          <tr><td>Nano 消息卡底色</td><td>#202020</td><td>#212121，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status issue">Issue · UI-12</td></tr>
-          <tr><td>Nano 店卡底色</td><td>chat_card_bg · #2D2D2D</td><td>#2E2E2E，n=5+区域</td><td>(+1,+1,+1) / 0.47</td><td class="status issue">Issue · UI-12</td></tr>
-          <tr><td>Nano CTA 底色</td><td>rgba(66,110,255,.24) 合成约 #323C5F</td><td>#353D5E，n=5+区域</td><td>(+3,+1,-1) / 1.51</td><td class="status issue">Issue · UI-13</td></tr>
+          <tr><td>Nano 消息卡底色</td><td>#202020</td><td>#212121，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status adapt">已忽略 · UI-12</td></tr>
+          <tr><td>Nano 店卡底色</td><td>chat_card_bg · #2D2D2D</td><td>#2E2E2E，n=5+区域</td><td>(+1,+1,+1) / 0.47</td><td class="status adapt">已忽略 · UI-12</td></tr>
+          <tr><td>Nano CTA 底色</td><td>rgba(66,110,255,.24) 合成约 #323C5F</td><td>#353D5E，n=5+区域</td><td>(+3,+1,-1) / 1.51</td><td class="status adapt">已忽略 · UI-13</td></tr>
           <tr><td>Nano 更多入口底圈 · 深色</td><td>截图估计 #535353；父容器 #373737</td><td>截图估计 #353535；父容器 #383838</td><td>(-30,-30,-30) / 13.14</td><td class="status issue">Issue · UI-19</td></tr>
           <tr><td>Nano 更多入口底圈 · 浅色</td><td>截图估计 #D5D5D5</td><td>截图估计 #D4D4D4–#D5D5D5</td><td>0～-1 RGB</td><td class="status pass">Pass</td></tr>
           <tr><td>深色加载 / 到底 token</td><td>需对应 Figma 状态</td><td>无实现深色截图</td><td>—</td><td class="status verify">未检查</td></tr>
@@ -151,16 +151,16 @@
         <tbody>
           <tr><td>浮层顶 / 高</td><td>y203 / h609（375×812）</td><td>y86 / h766</td><td class="status issue">Issue · UI-04</td><td>按实际设备高度等比后仍约提前 127pt</td></tr>
           <tr><td>标题栏高 / 上下 padding</td><td>60 / 17pt</td><td>约 60 / 17pt</td><td class="status pass">Pass</td><td>组件内部高度一致</td></tr>
-          <tr><td>标题文案</td><td>逛逛发现更多</td><td>更多店铺</td><td class="status issue">Issue · UI-05</td><td>文案不一致</td></tr>
+          <tr><td>标题文案</td><td>逛逛发现更多</td><td>更多店铺</td><td class="status adapt">已忽略 · UI-05</td><td>文案差异不纳入本轮验收</td></tr>
           <tr><td>标题栏左右 padding</td><td>20pt</td><td>约 20pt</td><td class="status pass">Pass</td><td>同边缘口径</td></tr>
           <tr><td>标题栏→首店铺</td><td>内容 py 6pt，首 logo 约 8pt</td><td>首 logo 约 11pt</td><td class="status verify">约 +3pt</td><td>截图估计，建议 DOM 复核</td></tr>
           <tr><td>店铺 logo</td><td>42×42pt</td><td>约 42×42pt</td><td class="status pass">Pass</td><td>外框尺寸</td></tr>
           <tr><td>logo→标题列</td><td>8pt</td><td>约 8pt</td><td class="status pass">Pass</td><td>水平相邻对</td></tr>
           <tr><td>店铺头→商品区</td><td>10pt 组件 gap</td><td>约 12–14pt</td><td class="status verify">漂移</td><td>动态标题/meta 高度需 DOM 复核</td></tr>
-          <tr><td>商品图片</td><td>82×82pt</td><td>约 86×86pt</td><td class="status issue">Issue · UI-14</td><td>宽高均 +4pt</td></tr>
+          <tr><td>商品图片</td><td>82×82pt</td><td>约 86×86pt</td><td class="status adapt">已忽略 · UI-14</td><td>宽高均 +4pt，不纳入本轮验收</td></tr>
           <tr><td>商品图外框弱描边</td><td>浅色 1px rgba(34,34,34,.03)；深色 1px rgba(255,255,255,.05)</td><td>截图未观察到连续框线；透明/留白图片与面板融合</td><td class="status verify">待代码确认 · UI-18</td><td>需检查固定尺寸 wrapper 的 border、radius、overflow 与主题 stroke token</td></tr>
           <tr><td>商品列局部间距</td><td>12pt</td><td>约 13pt</td><td class="status pass">1pt 漂移</td><td>图片框边缘口径</td></tr>
-          <tr><td>商品列 pitch / 左边缘</td><td>94pt；20/114/208/302</td><td>99pt；20/119/218/317</td><td class="status issue">Issue · UI-16</td><td>第 2/3/4 列累计右移 +5/+10/+15pt</td></tr>
+          <tr><td>商品列 pitch / 左边缘</td><td>94pt；20/114/208/302</td><td>99pt；20/119/218/317</td><td class="status adapt">已忽略 · UI-16</td><td>第 2/3/4 列累计右移 +5/+10/+15pt，不纳入本轮验收</td></tr>
           <tr><td>图片→标题</td><td>6pt</td><td>约 6pt</td><td class="status pass">Pass</td><td>纵向相邻对</td></tr>
           <tr><td>标题→价格 frame</td><td>0pt</td><td>约 2–4pt</td><td class="status verify">需 DOM 复核</td><td>截图仅能稳定量墨迹间距</td></tr>
           <tr><td>横滑视口右边界 / 第 4 列裁切</td><td>内容视口 x=20→375，宽 355；第 4 列图片可见约 73pt</td><td>内容视口 x=20→355，宽 335，右边界提前 20px；第 4 列图片仅可见约 54pt</td><td class="status issue">Issue · UI-17</td><td>视口少 20px，叠加列宽/pitch 漂移后导致第四项露出量不足</td></tr>
@@ -193,15 +193,15 @@
       <div class="table-scroll"><table>
         <thead><tr><th>元素</th><th>间距</th><th>对齐</th><th>字体</th><th>颜色</th><th>尺寸</th><th>边框/圆角</th><th>结论</th></tr></thead>
         <tbody>
-          <tr><td>Nano 店铺头</td><td>Pass</td><td>Pass</td><td>需代码复核 family</td><td>深色表面 Issue</td><td>logo 16 Pass</td><td>logo stroke 需复核</td><td class="status verify">部分需复核</td></tr>
+          <tr><td>Nano 店铺头</td><td>Pass</td><td>Pass</td><td>需代码复核 family</td><td>深色表面差异已忽略</td><td>logo 16 Pass</td><td>logo stroke 需复核</td><td class="status verify">部分需复核 · UI-12 已忽略</td></tr>
           <tr><td>Nano 商品行 ×3</td><td>内部纵向 Issue</td><td>列对齐 Pass</td><td>数字 family 需代码复核</td><td>价格浅/深基本一致</td><td>56×56 Pass</td><td>图片 chrome 需边缘证据</td><td class="status issue">UI-02</td></tr>
           <tr><td>Nano 推荐语</td><td>上间距 Issue</td><td>左对齐 Pass</td><td>字号/行高接近</td><td>主文字 Pass</td><td>2 行适配</td><td>N/A</td><td class="status issue">UI-02</td></tr>
-          <tr><td>Nano CTA</td><td>上下留白 Issue</td><td>居中 Pass</td><td>14/500 接近</td><td>深色底色 Issue</td><td>h40 Pass</td><td>r10 Pass</td><td class="status issue">UI-13</td></tr>
+          <tr><td>Nano CTA</td><td>上下留白已撤销</td><td>居中 Pass</td><td>14/500 接近</td><td>深色底色差异已忽略</td><td>h40 Pass</td><td>r10 Pass</td><td class="status adapt">UI-13 已忽略</td></tr>
           <tr><td>Nano 更多入口</td><td>卡片间 gap Issue</td><td>居中 Pass</td><td>12/600 接近</td><td>深色底圈 Issue；浅色 Pass</td><td>icon 墨迹 Pass</td><td>圆形底 16 Pass</td><td class="status issue">UI-03/UI-19</td></tr>
-          <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status issue">文案/图标</td></tr>
+          <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status verify">UI-05 已忽略；图标见 UI-06</td></tr>
           <tr><td>H5 下拉图标</td><td>右 inset Pass</td><td>中心接近</td><td>N/A</td><td>tint Pass</td><td>墨迹 Issue</td><td>N/A</td><td class="status issue">UI-06</td></tr>
           <tr><td>H5 店铺头</td><td>top 漂移</td><td>左列 Pass</td><td>需 DOM 复核</td><td>次文字 Pass</td><td>logo 42 Pass</td><td>r8 / stroke 需复核</td><td class="status verify">部分需复核</td></tr>
-          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>累计列漂移 +5/+10/+15pt；视口右边界 -20px</td><td>数字 family 需 DOM</td><td>价格 Issue</td><td>图片 86 vs 82；末列过度裁切</td><td>弱描边待代码确认</td><td class="status issue">UI-10/UI-14/UI-16/UI-17/UI-18</td></tr>
+          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>列漂移已忽略；视口右边界 -20px</td><td>数字 family 需 DOM</td><td>价格差异已忽略</td><td>图片尺寸已忽略；末列裁切仍为 Issue</td><td>弱描边待代码确认</td><td class="status issue">UI-17/UI-18；UI-10/14/16 已忽略</td></tr>
           <tr><td>H5 refresh spinner</td><td>上下空白 Issue</td><td>水平居中 Pass</td><td>N/A</td><td>浅色低对比接近</td><td>21×21 vs 39×40</td><td>N/A</td><td class="status issue">UI-07</td></tr>
           <tr><td>H5 到底文案</td><td>底部留白 Issue</td><td>水平居中 Pass</td><td>实际约更大</td><td>浅灰接近</td><td>53×14 vs 47×12</td><td>N/A</td><td class="status issue">UI-08</td></tr>
         </tbody>
@@ -213,9 +213,10 @@
       <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告的错误间距结论已撤销。</p>
       <ul>
         <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；横纵间距、尺寸、图标、深色颜色均独立建账。</li>
-        <li><b>逐条问题证据门槛：</b>19 条问题记录 = 19 个卡内主标注证据图，缺失 0；UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
+        <li><b>逐条问题证据门槛：</b>19 条问题记录 = 19 个卡内主标注证据图，缺失 0；其中有效问题 9 条、已忽略 10 条。UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
         <li><b>标注坐标门槛：</b>36 条标注记录已写入 transform manifest；所有测量线/框包含源图坐标、裁切框与缩放倍率，脚本回算结果 36/36 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
         <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、商品图 wrapper 弱描边、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
+        <li><b>忽略项行为：</b>UI-01、05、09～16 默认“忽略”，详细正文折叠，紧凑标题、优先级、ID 和状态仍可见并可恢复；有效问题统计不含这 10 项。</li>
         <li><b>报告状态：</b>公开 HTTPS 页面用于查看；状态/备注、忽略折叠和 JSON 导出仍仅使用当前浏览器的 localStorage，不具备跨设备共享同步，因此编辑同步能力仍记为未完成。</li>
         <li><b>证据干扰：</b>绿色触点、紫色录屏区域、vConsole 固定按钮均按测试干扰忽略；未作为产品 UI 缺陷。</li>
       </ul>
@@ -248,10 +249,11 @@ const issues = [
  {id:'UI-18',p:'P2',surface:'H5 · 浅色/深色',title:'商品图外框的 1px 弱描边可能未呈现',img:'assets/issue-ui-18.png',caption:'用户补充证据原标 UI-008；本报告归并为 UI-18，避免与既有“到底态”UI-08 冲突。设计浅/深主题均有极弱 1px stroke，实现截图未观察到连续框线。',evidence:'Figma：浅色 1px rgba(34,34,34,.03)，深色 1px rgba(255,255,255,.05)；实现截图中透明或留白商品图与 sheet 融为一体，但 3%/5% 透明度不足以仅凭截图确认缺陷。',expect:'固定 82×82 外层 tile 在浅/深主题分别使用对应 1px stroke，并保持 radius 与 overflow:hidden。',fix:'检查商品图 wrapper 的 computed style：border、border-color、radius、overflow:hidden 与主题 stroke token；若代码值正确则关闭此项。',defaultStatus:'待代码确认'},
  {id:'UI-19',p:'P2',surface:'Nano · 深色',title:'更多入口底圈颜色过暗，圆形承托几乎消失',img:'assets/issue-ui-19.png',caption:'红框紧贴底圈区域；分别取底圈内部稳定像素和父容器纯色面。Figma 底圈约 #535353、父容器 #373737；实现底圈约 #353535、父容器 #383838。',evidence:'深色底圈实现比设计低约 30 RGB，ΔE76 约 13.14；且比实际父容器还暗 3 RGB，导致底圈对比方向与设计相反。浅色底圈设计约 #D5D5D5、实现约 #D4D4D4–#D5D5D5，可判通过。',expect:'深色入口底圈使用与 Figma 一致的语义色，使圆形底明显亮于父容器；箭头 tint 保持独立 token。',fix:'将底圈 background 从父容器/近似灰中拆出，绑定深色主题 circle-fill token；复测底圈、父容器和箭头 tint 三项，不要只改箭头颜色。'}
 ];
-const KEY='flash-store-ui-review-rebuilt-v1';
+const DEFAULT_IGNORED=new Set(['UI-01','UI-05','UI-09','UI-10','UI-11','UI-12','UI-13','UI-14','UI-15','UI-16']);
+const KEY='flash-store-ui-review-rebuilt-v2';
 function renderIssues(){
  const state=JSON.parse(localStorage.getItem(KEY)||'{}'); const root=document.getElementById('issueList'); root.innerHTML='';
- issues.forEach(it=>{const s=state[it.id]||{};const initialStatus=s.status||it.defaultStatus||'待处理';const el=document.createElement('article');el.className='issue-card '+(initialStatus==='忽略'?'ignored':'');el.dataset.priority=it.p;
+ issues.forEach(it=>{const s=state[it.id]||{};const initialStatus=s.status||(DEFAULT_IGNORED.has(it.id)?'忽略':it.defaultStatus)||'待处理';const el=document.createElement('article');el.className='issue-card '+(initialStatus==='忽略'?'ignored':'');el.dataset.priority=it.p;
  const extraEvidence=it.extraImg?`<figure class="issue-evidence"><img src="${it.extraImg}" alt="${it.id} ${it.title} 补充标注证据"><figcaption><b>${it.id} 补充标注证据：</b>${it.extraCaption}</figcaption></figure>`:'';
  el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态"><option>待处理</option><option>待代码确认</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure>${extraEvidence}<div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="记录负责人、修复链接、复测结论…">${s.note||''}</textarea></div></div>`;
  const sel=el.querySelector('select');sel.value=initialStatus;sel.addEventListener('change',()=>{el.classList.toggle('ignored',sel.value==='忽略');saveOne(it.id,sel.value,el.querySelector('textarea').value)});el.querySelector('textarea').addEventListener('input',e=>saveOne(it.id,sel.value,e.target.value));root.appendChild(el);
