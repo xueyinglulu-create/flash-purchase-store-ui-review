@@ -38,8 +38,8 @@
 
   <header>
     <h1>店铺卡片、更多入口、更多店铺浮层<br>UI Review · 坐标校正版</h1>
-    <p>本版重新从 Figma 与 8 张 iPhone 15 截图量取原图坐标，撤销旧报告中口径错误的间距结论；所有间距线均由源图边缘坐标生成并回算校验。Nano 与 H5 分开审计，浮层新增逐列对齐、累计漂移和右侧裁切量检查。</p>
-    <span class="tag">设备：iPhone 15</span><span class="tag">截图：1179×2556px</span><span class="tag">逻辑视口：393×852pt</span><span class="tag">比例：3px/pt</span><span class="tag">Nano 卡片</span><span class="tag">H5 浮层</span>
+    <p>本版重新从 Figma 与 8 张 iPhone 15 截图量取原图坐标，撤销旧报告中口径错误的间距结论；所有间距线均由源图边缘坐标生成并回算校验。Nano 与 H5 分开审计；H5 按 375→393 的等比适配复核尺寸、列距和右侧裁切。</p>
+    <span class="tag">设备：iPhone 15</span><span class="tag">截图：1179×2556px</span><span class="tag">逻辑视口：393×852pt</span><span class="tag">截图比例 C=3</span><span class="tag">H5 布局比例 L=1.048</span><span class="tag">Nano 卡片</span><span class="tag">H5 浮层</span>
   </header>
 
   <section class="grid">
@@ -51,6 +51,7 @@
       <h2>结论先行</h2>
       <div class="callout danger"><b>当前保留 9 项。</b> Nano 三行“销量→价格”均多出约 10pt；H5 浮层起点明显提前、下拉图标偏小，加载/到底态纵向节奏不一致，横滑视口右边界提前 20px。以上仍需处理或确认。</div>
       <div class="callout"><b>本轮按评审意见忽略 10 项。</b> UI-01、UI-05、UI-09～UI-16 默认标记为“忽略”，卡片正文折叠但保留标题和状态，可随时恢复查看；这些项目不再计入有效问题与优先级统计。</div>
+      <div class="callout"><b>H5 缩放口径已校正。</b> Figma 参考宽 375，运行时 CSS 视口宽 393，原始截图宽 1179；L=393/375=1.048，C=1179/393=3，K=3.144。设计尺寸先乘 L 再与运行时 CSS 坐标比较；因此 82 设计单位图片框对应约 85.94 CSS px、94 设计单位列距对应约 98.51 CSS px，实际约 86 / 99，均不再判为尺寸或累计漂移缺陷。</div>
       <div class="callout"><b>Nano 深色“更多入口”底圈颜色错误。</b> Figma 截图估计约 <span class="mono">#535353</span>，实现约 <span class="mono">#353535</span>；实际父容器约 <span class="mono">#383838</span>，底圈反而更暗，圆形承托几乎消失。浅色模式底圈约 <span class="mono">#D4D4D4–#D5D5D5</span>，可判通过。</div>
       <div class="callout warn"><b>初始空态仍不能判实现通过。</b> Figma 初始空态已完整测量，但当前 8 张实现截图没有对应的“空列表 + 加载文案”画面；报告明确记为未检查，不再用刷新中或默认列表代替。</div>
     </article>
@@ -79,10 +80,10 @@
           <tr><td>初始空态：文字墨迹</td><td>40×13pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>“加载中”联合 bbox</td></tr>
           <tr><td>初始空态：文字底→容器底</td><td>233pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>总和 239+41+23+13+233=549，残差 0</td></tr>
           <tr><td>初始空态：整组中心线</td><td>比内容区中心下 3pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>图标+文案可见组中心</td></tr>
-          <tr><td>刷新加载：spinner 墨迹</td><td>约 39×40pt</td><td>约 21×21pt</td><td>-18×-19pt</td><td class="status issue">Issue · UI-07</td><td>同为 spinner 可见墨迹 bbox</td></tr>
-          <tr><td>刷新加载：末内容→spinner</td><td>约 30pt</td><td>约 36pt</td><td>+6pt</td><td class="status issue">Issue · UI-07</td><td>末行可见内容/分割线→图标顶</td></tr>
-          <tr><td>到底态：末内容→文案</td><td>约 36pt</td><td>约 43pt</td><td>+7pt</td><td class="status issue">Issue · UI-08</td><td>末价格墨迹/分割线→文案顶</td></tr>
-          <tr><td>到底态：文案底→面板底</td><td>51pt</td><td>23pt</td><td>-28pt</td><td class="status issue">Issue · UI-08</td><td>同一面板底边口径</td></tr>
+          <tr><td>刷新加载：spinner 墨迹</td><td>设计 39×40；运行时应约 40.9×41.9px</td><td>约 21×21px</td><td>约 -19.9×-20.9px</td><td class="status issue">Issue · UI-07</td><td>同为 spinner 可见墨迹 bbox；设计值先乘 L</td></tr>
+          <tr><td>刷新加载：末内容→spinner</td><td>设计约 30；运行时应约 31.4px</td><td>约 36px</td><td>约 +4.6px</td><td class="status issue">Issue · UI-07</td><td>末行可见内容/分割线→图标顶</td></tr>
+          <tr><td>到底态：末内容→文案</td><td>设计约 36；运行时应约 37.7px</td><td>约 43px</td><td>约 +5.3px</td><td class="status issue">Issue · UI-08</td><td>末价格墨迹/分割线→文案顶</td></tr>
+          <tr><td>到底态：文案底→面板底</td><td>设计 51；运行时应约 53.4px</td><td>约 23px</td><td>约 -30.4px</td><td class="status issue">Issue · UI-08</td><td>同一面板底边口径；设计值先乘 L</td></tr>
         </tbody>
       </table></div>
       <figure><img src="assets/evidence-state-end-spacing.png" alt="到底态底部留白对比"><figcaption>实际“到底了～”更靠近面板底部；该差异不能被“文案存在”覆盖。</figcaption></figure>
@@ -151,7 +152,7 @@
       <div class="table-scroll"><table>
         <thead><tr><th>元素 / 关系</th><th>Figma</th><th>实现（393×852pt）</th><th>结果</th><th>说明</th></tr></thead>
         <tbody>
-          <tr><td>浮层顶 / 高</td><td>y203 / h609（375×812）</td><td>y86 / h766</td><td class="status issue">Issue · UI-04</td><td>按实际设备高度等比后仍约提前 127pt</td></tr>
+          <tr><td>浮层顶 / 高</td><td>底部锚定；运行时应 top≈213.8 / h≈638.2px</td><td>top≈86 / h≈766px</td><td class="status issue">Issue · UI-04</td><td>按宽度适配 L=1.048 后，顶部仍提前约 127.8px</td></tr>
           <tr><td>标题栏高 / 上下 padding</td><td>60 / 17pt</td><td>约 60 / 17pt</td><td class="status pass">Pass</td><td>组件内部高度一致</td></tr>
           <tr><td>标题文案</td><td>逛逛发现更多</td><td>更多店铺</td><td class="status adapt">已忽略 · UI-05</td><td>文案差异不纳入本轮验收</td></tr>
           <tr><td>标题栏左右 padding</td><td>20pt</td><td>约 20pt</td><td class="status pass">Pass</td><td>同边缘口径</td></tr>
@@ -159,13 +160,13 @@
           <tr><td>店铺 logo</td><td>42×42pt</td><td>约 42×42pt</td><td class="status pass">Pass</td><td>外框尺寸</td></tr>
           <tr><td>logo→标题列</td><td>8pt</td><td>约 8pt</td><td class="status pass">Pass</td><td>水平相邻对</td></tr>
           <tr><td>店铺头→商品区</td><td>10pt 组件 gap</td><td>约 12–14pt</td><td class="status verify">漂移</td><td>动态标题/meta 高度需 DOM 复核</td></tr>
-          <tr><td>商品图片</td><td>82×82pt</td><td>约 86×86pt</td><td class="status adapt">已忽略 · UI-14</td><td>宽高均 +4pt，不纳入本轮验收</td></tr>
+          <tr><td>商品图片</td><td>设计 82×82；运行时应约 85.94×85.94px</td><td>约 86×86px</td><td class="status pass">Pass · UI-14 已撤销</td><td>原结论漏乘 H5 布局比例 L=1.048</td></tr>
           <tr><td>商品图外框弱描边</td><td>浅色 1px rgba(34,34,34,.03)；深色 1px rgba(255,255,255,.05)</td><td>截图未观察到连续框线；透明/留白图片与面板融合</td><td class="status verify">待代码确认 · UI-18</td><td>需检查固定尺寸 wrapper 的 border、radius、overflow 与主题 stroke token</td></tr>
           <tr><td>商品列局部间距</td><td>12pt</td><td>约 13pt</td><td class="status pass">1pt 漂移</td><td>图片框边缘口径</td></tr>
-          <tr><td>商品列 pitch / 左边缘</td><td>94pt；20/114/208/302</td><td>99pt；20/119/218/317</td><td class="status adapt">已忽略 · UI-16</td><td>第 2/3/4 列累计右移 +5/+10/+15pt，不纳入本轮验收</td></tr>
+          <tr><td>商品列 pitch / 左边缘</td><td>运行时 pitch≈98.51px；左边缘≈20.96/119.47/217.98/316.49</td><td>约 99px；20/119/218/317</td><td class="status pass">Pass · UI-16 已撤销</td><td>各列截图估算差约 -0.96/-0.47/+0.02/+0.51px，无累计漂移</td></tr>
           <tr><td>图片→标题</td><td>6pt</td><td>约 6pt</td><td class="status pass">Pass</td><td>纵向相邻对</td></tr>
           <tr><td>标题→价格 frame</td><td>0pt</td><td>约 2–4pt</td><td class="status verify">需 DOM 复核</td><td>截图仅能稳定量墨迹间距</td></tr>
-          <tr><td>横滑视口右边界 / 第 4 列裁切</td><td>内容视口 x=20→375，宽 355；第 4 列图片可见约 73pt</td><td>内容视口 x=20→355，宽 335，右边界提前 20px；第 4 列图片仅可见约 54pt</td><td class="status issue">Issue · UI-17</td><td>视口少 20px，叠加列宽/pitch 漂移后导致第四项露出量不足</td></tr>
+          <tr><td>横滑视口右边界 / 第 4 列裁切</td><td>设计归一坐标 x=20→375，宽 355；运行时应约 x=20.96→393，宽 372.04px</td><td>归一后约 x=20→355，宽 335；等价运行时右边界约 372px</td><td class="status issue">Issue · UI-17</td><td>运行时右侧约提前 21px；列宽/pitch 本身按 L 校正后通过</td></tr>
           <tr><td>滚动条</td><td>设计状态未显示系统条</td><td>部分 Nano 画面显示</td><td class="status verify">未归 H5 缺陷</td><td>容器/录屏状态需运行时确认</td></tr>
         </tbody>
       </table></div>
@@ -203,7 +204,7 @@
           <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status verify">UI-05 已忽略；图标见 UI-06</td></tr>
           <tr><td>H5 下拉图标</td><td>右 inset Pass</td><td>中心接近</td><td>N/A</td><td>tint Pass</td><td>墨迹 Issue</td><td>N/A</td><td class="status issue">UI-06</td></tr>
           <tr><td>H5 店铺头</td><td>top 漂移</td><td>左列 Pass</td><td>需 DOM 复核</td><td>次文字 Pass</td><td>logo 42 Pass</td><td>r8 / stroke 需复核</td><td class="status verify">部分需复核</td></tr>
-          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>列漂移已忽略；视口右边界 -20px</td><td>数字 family 需 DOM</td><td>价格差异已忽略</td><td>图片尺寸已忽略；末列裁切仍为 Issue</td><td>弱描边待代码确认</td><td class="status issue">UI-17/UI-18；UI-10/14/16 已忽略</td></tr>
+          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>列距按 L 校正后通过；视口右边界约 -21px</td><td>数字 family 需 DOM</td><td>价格差异已忽略</td><td>图片尺寸按 L 校正后通过；末列裁切仍为 Issue</td><td>弱描边待代码确认</td><td class="status issue">UI-17/UI-18；UI-14/16 已撤销</td></tr>
           <tr><td>H5 refresh spinner</td><td>上下空白 Issue</td><td>水平居中 Pass</td><td>N/A</td><td>浅色低对比接近</td><td>21×21 vs 39×40</td><td>N/A</td><td class="status issue">UI-07</td></tr>
           <tr><td>H5 到底文案</td><td>底部留白 Issue</td><td>水平居中 Pass</td><td>实际约更大</td><td>浅灰接近</td><td>53×14 vs 47×12</td><td>N/A</td><td class="status issue">UI-08</td></tr>
         </tbody>
@@ -212,9 +213,9 @@
 
     <article class="card span-12">
       <h2>交付前完整性检查</h2>
-      <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告的错误间距结论已撤销。</p>
+      <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、H5 布局比例/截图比例分账、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告中漏乘 H5 布局比例的图片尺寸与列距结论已撤销。</p>
       <ul>
-        <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；横纵间距、尺寸、图标、深色颜色均独立建账。</li>
+        <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；H5 采用 Figma 375 → CSS 393 的等比模型（L=1.048、C=3、K=3.144），横纵间距、尺寸、图标、深色颜色均独立建账。</li>
         <li><b>逐条问题证据门槛：</b>19 条问题记录 = 19 个卡内主标注证据图，缺失 0；其中有效问题 9 条、已忽略 10 条。UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
         <li><b>标注坐标门槛：</b>36 条标注记录已写入 transform manifest；所有测量线/框包含源图坐标、裁切框与缩放倍率，脚本回算结果 36/36 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
         <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、商品图 wrapper 弱描边、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
@@ -236,20 +237,20 @@ const issues = [
  {id:'UI-01',p:'P0',surface:'H5',title:'加载与到底态价格输出 ¥NaN',img:'assets/issue-ui-01.png',caption:'红框逐行标出异常现价；截图直接证明 NaN 已进入展示层。',evidence:'IMG_3050、IMG_3051 的多件商品现价均显示 ¥NaN，旧价仍存在。',expect:'输出有效价格；无价格时使用明确占位/隐藏策略，不允许 NaN 进入 UI。',fix:'在格式化前校验 number/finite；统一币种组件的空值与异常兜底。'},
  {id:'UI-02',p:'P1',surface:'Nano',title:'三行“销量→价格”和第 3 行→推荐语间距均被拉开',img:'assets/issue-ui-02.png',caption:'端帽贴在可见墨迹边缘：设计 2/2/2/14pt，实现约 12/12/12/24pt。',evidence:'三行销量墨迹→价格墨迹均由 2pt 变为约 12pt（+10pt）；第 3 个价格→推荐语由 14pt 变为约 24pt（+10pt）。旧报告中的 CTA→卡底 +6pt 为错误口径，已撤销。',expect:'三行使用一致的文本堆叠；销量→价格保持约 2pt，第 3 行价格→推荐语保持约 14pt。',fix:'检查 Nano 商品文本列的固定行高、margin 与 flex 分配；避免每行在价格前额外加入约 10pt。'},
  {id:'UI-03',p:'P1',surface:'Nano',title:'店铺卡片到“更多入口”的水平间距不足',img:'assets/issue-ui-03.png',caption:'设计与实现均以卡片右边缘→入口左边缘的端帽线测量：10pt 对 6pt。',evidence:'设计 gap 10pt；实现截图估计约 6pt，少 4pt。',expect:'卡片与更多入口保持 10pt。',fix:'统一 carousel item gap token 为 10pt，移除入口自身负 margin/容器补偿。'},
- {id:'UI-04',p:'P1',surface:'H5',title:'更多店铺浮层高度过大，起点明显提前',img:'assets/issue-ui-04.png',caption:'左右分别标出 Figma 与实现的真实浮层边界，未复用镜像坐标。',evidence:'Figma 375×812 中 y203/h609；实现 393×852 中 y86/h766。按设备高度等比后仍约提前 127pt。',expect:'按设计的 bottom sheet 高度/最大高度与滚动区约束展示。',fix:'校正 sheet max-height、header 固定区和 scrollport 高度，不要让内容高度直接撑满视口。'},
+ {id:'UI-04',p:'P1',surface:'H5',title:'更多店铺浮层高度过大，起点明显提前',img:'assets/issue-ui-04.png',caption:'左右分别标出 Figma 与实现的真实浮层边界；按底部锚定和 L=1.048 复算。',evidence:'Figma h609 设计单位在 393 CSS 视口应约 638.2px、top≈213.8px；实现 top≈86px/h≈766px，顶部仍提前约 127.8px。',expect:'按设计的 bottom sheet 高度/最大高度与滚动区约束展示。',fix:'校正 sheet max-height、header 固定区和 scrollport 高度，不要让内容高度直接撑满视口。'},
  {id:'UI-05',p:'P1',surface:'H5',title:'浮层标题文案与设计不一致',img:'assets/issue-ui-05.png',caption:'并排框选设计标题“逛逛发现更多”和实现标题“更多店铺”。',evidence:'Figma“逛逛发现更多”，实现“更多店铺”。',expect:'使用设计/产品确认后的唯一文案。',fix:'替换 H5 标题并同步埋点/无障碍 label。'},
- {id:'UI-06',p:'P1',surface:'H5',title:'面板下拉图标可见尺寸偏小',img:'assets/issue-ui-06.png',caption:'以同一可见墨迹 bbox 口径对比设计 18×9pt 与实现约 11×6pt。',evidence:'Figma icon/down frame 24×24pt、墨迹约 18×9pt；实现墨迹约 11×6pt，宽少 7pt、高少 3pt。',expect:'24×24 frame 内渲染设计 icon/down，保持 18×9 左右的可见墨迹。',fix:'不要把 24px 组件再次缩放；检查 SVG viewBox、width/height 与 transform。'},
- {id:'UI-07',p:'P1',surface:'H5',title:'刷新加载 spinner 尺寸过小且上方留白偏大',img:'assets/issue-ui-07.png',caption:'端帽分别贴在内容底/分割线和 spinner 顶；可见墨迹框按同一口径测量。',evidence:'设计 spinner 墨迹约 39×40pt，实现约 21×21pt；内容底→spinner 设计约 30pt，实现约 36pt。',expect:'spinner 使用 40×40 frame，按设计的内容后间距放置。',fix:'修正 loading 组件尺寸 token；将 sentinel padding 与图标尺寸拆开定义。'},
- {id:'UI-08',p:'P1',surface:'H5',title:'到底态文案过于贴近面板底部',img:'assets/issue-ui-08.png',caption:'同一面板底边口径：设计文字底→底边 51pt，实现 23pt。',evidence:'“到底了～”文字底→面板底设计约 51pt，实现约 23pt，少约 28pt；文字墨迹也由约 47×11 变为 53×14。',expect:'保持约 51pt 底部留白，并使用设计字号/行高。',fix:'把 end sentinel 纳入 scroll content 的固定 bottom padding；不要用 viewport bottom 直接定位。'},
+ {id:'UI-06',p:'P1',surface:'H5',title:'面板下拉图标可见尺寸偏小',img:'assets/issue-ui-06.png',caption:'同一可见墨迹 bbox：设计 18×9，经 L=1.048 后应约 18.9×9.4px；实现约 11×6px。',evidence:'Figma icon/down frame 24×24、墨迹约 18×9；运行时预期墨迹约 18.9×9.4px，实现约 11×6px，宽少约 7.9px、高少约 3.4px。',expect:'约 25.2×25.2px 运行时 frame 内渲染设计 icon/down，保持约 18.9×9.4px 的可见墨迹。',fix:'不要把图标组件再次缩放；检查 SVG viewBox、width/height 与 transform。'},
+ {id:'UI-07',p:'P1',surface:'H5',title:'刷新加载 spinner 尺寸过小且上方留白偏大',img:'assets/issue-ui-07.png',caption:'端帽分别贴在内容底/分割线和 spinner 顶；设计值先乘 L=1.048。',evidence:'设计 spinner 墨迹 39×40 在运行时应约 40.9×41.9px，实现约 21×21px；内容底→spinner 设计 30 应约 31.4px，实现约 36px。',expect:'spinner 使用约 41.9×41.9px 运行时 frame，按设计的内容后间距放置。',fix:'修正 loading 组件尺寸 token；将 sentinel padding 与图标尺寸拆开定义。'},
+ {id:'UI-08',p:'P1',surface:'H5',title:'到底态文案过于贴近面板底部',img:'assets/issue-ui-08.png',caption:'同一面板底边口径：设计 51 经 L=1.048 后应约 53.4px，实现约 23px。',evidence:'“到底了～”文字底→面板底运行时应约 53.4px，实现约 23px，少约 30.4px；文字墨迹设计 47×11 对应约 49.3×11.5px，实现约 53×14px。',expect:'保持约 53.4px 运行时底部留白，并使用设计字号/行高。',fix:'把 end sentinel 纳入 scroll content 的固定 bottom padding；不要用 viewport bottom 直接定位。'},
  {id:'UI-09',p:'P2',surface:'H5 · 深色',title:'深色面板背景未使用 Figma token',img:'assets/issue-ui-09.png',caption:'框选纯色面板内部采样区，设计 #222222，实现稳定为 #232323。',evidence:'设计 #222222；实现稳定采样 #232323，ΔRGB(+1,+1,+1)。',expect:'使用 panel_bg_white 深色值 #222222。',fix:'移除局部硬编码 #232323，绑定面板语义 token。'},
  {id:'UI-10',p:'P1',surface:'H5 · 深色',title:'深色价格色 token 偏差明显',img:'assets/issue-ui-10.png',caption:'红框只覆盖现价文字区域；设计 #FF764D，实现核心像素约 #EE7F59。',evidence:'Figma orange100 #FF764D；实现核心像素约 #EE7F59，ΔE76 12.6。',expect:'现价使用 #FF764D；旧价使用对应灰色 token。',fix:'H5 价格组件改用统一 orange100，避免主题分支落到旧品牌橙。'},
  {id:'UI-11',p:'P2',surface:'H5 · 深色',title:'深色分割线偏暗',img:'assets/issue-ui-11.png',caption:'放大并框选同一店铺分割线：设计 #3D3D3D，实现 #393939。',evidence:'Figma 渲染 #3D3D3D；实现 #393939，ΔRGB(-4,-4,-4)。',expect:'使用设计分割线/白色透明度 token。',fix:'将 divider 从硬编码灰改成 dark divider token。'},
  {id:'UI-12',p:'P2',surface:'Nano · 深色',title:'深色消息卡与店卡表面各偏亮 1 RGB',img:'assets/issue-ui-12.png',caption:'双层红框分别标出外部消息卡和内部店卡的稳定纯色采样区域。',evidence:'消息卡 #202020→#212121；店卡 #2D2D2D→#2E2E2E。是稳定纯色采样，不是抗锯齿。',expect:'严格绑定 chat_card_bg 等设计 token。',fix:'去掉原生侧的近似色常量；从同一语义色表读取深色值。'},
  {id:'UI-13',p:'P1',surface:'Nano · 深色',title:'CTA 深色底色合成结果不一致',img:'assets/issue-ui-13.png',caption:'框选 CTA 内部纯色区，对比设计合成值约 #323C5F 与实现 #353D5E。',evidence:'Figma rgba(66,110,255,.24) 叠加约 #323C5F；实现约 #353D5E，ΔE76 1.51。',expect:'按设计使用 qwen-purple-light 透明色或相同合成结果。',fix:'核对 CTA 父背景与 alpha 合成顺序；避免先转不透明近似色。'},
- {id:'UI-14',p:'P1',surface:'H5',title:'商品图片框 86×86pt，设计为 82×82pt',img:'assets/issue-ui-14.png',caption:'红框按外部圆角图片容器测量，设计 82×82pt，实现约 86×86pt。',evidence:'实现商品图宽高均约 +4pt；重复列因此更拥挤并加重右侧裁切。',expect:'商品图外框 82×82pt，列 gap 12pt。',fix:'修正 tile size；图片 object-fit 仅影响内部内容，不要撑大外框。'},
+ {id:'UI-14',p:'P1',surface:'H5',title:'已撤销：商品图片框尺寸经 H5 等比适配后通过',img:'assets/issue-ui-14.png',caption:'旧标注直接比较 82 与 86，漏乘 L=1.048；该图仅保留为废弃口径记录。',evidence:'设计 82×82 经 L=393/375 后应约 85.94×85.94px，实现约 86×86px，宽高均通过。',expect:'运行时外框约 85.94×85.94px。',fix:'无需按旧结论缩小；只需继续复核 outer wrapper 的 stroke、radius 与 overflow。'},
  {id:'UI-15',p:'P0',surface:'H5',title:'商品图片出现纯黑失败占位',img:'assets/issue-ui-15.png',caption:'红框紧贴第 4 个商品图片容器，内部为纯黑失败画面。',evidence:'IMG_3050、IMG_3051 首店铺第 4 个商品图片区域为纯黑色，与其他商品图及 Figma 均不一致。',expect:'资源成功展示；失败时使用设计占位图和可恢复加载策略，不显示黑块。',fix:'排查图片解码/URL/跨域与透明通道；为 onerror 和解码失败统一兜底。'},
- {id:'UI-16',p:'P1',surface:'H5',title:'商品列从第 2 列起累计向右漂移',img:'assets/issue-ui-16.png',caption:'蓝线标出每列图片/标题/价格共同左边缘：设计 20/114/208/302，实现 20/119/218/317。',evidence:'设计列 pitch 94pt，实现约 99pt；第 2/3/4 列相对设计累计右移约 5/10/15pt。旧报告只检查首列和局部 gap，误判“列对齐 Pass”。',expect:'所有商品列按设计 94pt pitch 对齐，图片、标题、价格共享同一列左边。',fix:'将 tile 宽度恢复到 82pt，并把列 gap 固定为 12pt；按完整 pitch 验证而不是只看首列。'},
- {id:'UI-17',p:'P1',surface:'H5',title:'商品横滑视口右边界提前 20px，第四项露出量不足',img:'assets/issue-ui-17.png',caption:'主证据按同一图片外框口径量取第四列可见宽度：设计约 73pt，实现约 54pt。',extraImg:'assets/issue-ui-17-viewport.png',extraCaption:'补充证据：设计内容视口 x=20→375、宽 355；实际 x=20→355、宽 335，右边界提前 20px。',evidence:'横滑内容视口右边界较设计提前 20px；同时实现 tile/pitch 偏大，第四列图片由设计可见约 73pt 降至约 54pt，标题和价格也随列过度贴近裁切边。',expect:'内容视口保持 x=20→375、宽 355，并保留与 Figma 接近的轻量“下一列露出”。',fix:'修正横向滚动容器的右侧边界与 padding；恢复 82pt tile/94pt pitch 后，复测视口宽度和第四列可见量。'},
+ {id:'UI-16',p:'P1',surface:'H5',title:'已撤销：商品列距经 H5 等比适配后无累计漂移',img:'assets/issue-ui-16.png',caption:'旧标注把 375 设计坐标直接与 393 CSS 坐标比较；该图仅保留为废弃口径记录。',evidence:'设计 pitch 94 经 L=1.048 后应约 98.51px，实现约 99px；四列预期左边缘约 20.96/119.47/217.98/316.49，实际约 20/119/218/317，均在约 1px 截图估算误差内。',expect:'列距约 98.51px，图片、标题、价格共享同一列左边。',fix:'无需按旧结论调整 tile/pitch；单独修复横滑视口右侧 clip。'},
+ {id:'UI-17',p:'P1',surface:'H5',title:'商品横滑视口右边界提前约 21px，第四项露出量不足',img:'assets/issue-ui-17.png',caption:'主证据按同一图片外框口径量取第四列可见量；列宽/列距已按 L 校正为通过。',extraImg:'assets/issue-ui-17-viewport.png',extraCaption:'设计归一坐标 x=20→375；实现归一后约 x=20→355，等价运行时右边界约 372px，比 393px 视口提前约 21px。',evidence:'横滑内容视口右边界在运行时约提前 21px；第四列露出量因此不足。tile/pitch 经 H5 等比适配复核后本身通过，不再作为原因。',expect:'运行时内容视口从约 x=20.96 延伸至 393px，并保留与 Figma 接近的下一列露出。',fix:'让横向 scroller 的 clip 边界延伸到 viewport right；把右 padding 放到滚动内容末尾，不要改已通过的 tile/pitch。'},
  {id:'UI-18',p:'P2',surface:'H5 · 浅色/深色',title:'商品图外框的 1px 弱描边可能未呈现',img:'assets/issue-ui-18.png',caption:'用户补充证据原标 UI-008；本报告归并为 UI-18，避免与既有“到底态”UI-08 冲突。设计浅/深主题均有极弱 1px stroke，实现截图未观察到连续框线。',evidence:'Figma：浅色 1px rgba(34,34,34,.03)，深色 1px rgba(255,255,255,.05)；实现截图中透明或留白商品图与 sheet 融为一体，但 3%/5% 透明度不足以仅凭截图确认缺陷。',expect:'固定 82×82 外层 tile 在浅/深主题分别使用对应 1px stroke，并保持 radius 与 overflow:hidden。',fix:'检查商品图 wrapper 的 computed style：border、border-color、radius、overflow:hidden 与主题 stroke token；若代码值正确则关闭此项。',defaultStatus:'待代码确认'},
  {id:'UI-19',p:'P2',surface:'Nano · 深色',title:'更多入口底圈颜色过暗，圆形承托几乎消失',img:'assets/issue-ui-19.png',caption:'红框紧贴底圈区域；分别取底圈内部稳定像素和父容器纯色面。Figma 底圈约 #535353、父容器 #373737；实现底圈约 #353535、父容器 #383838。',evidence:'深色底圈实现比设计低约 30 RGB，ΔE76 约 13.14；且比实际父容器还暗 3 RGB，导致底圈对比方向与设计相反。浅色底圈设计约 #D5D5D5、实现约 #D4D4D4–#D5D5D5，可判通过。',expect:'深色入口底圈使用与 Figma 一致的语义色，使圆形底明显亮于父容器；箭头 tint 保持独立 token。',fix:'将底圈 background 从父容器/近似灰中拆出，绑定深色主题 circle-fill token；复测底圈、父容器和箭头 tint 三项，不要只改箭头颜色。'}
 ];
