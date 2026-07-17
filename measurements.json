@@ -52,12 +52,30 @@
     ]
   },
   "h5_right_clip": {
+    "design_viewport": {
+      "left": 20,
+      "right": 375,
+      "width": 355
+    },
+    "actual_viewport": {
+      "left": 20,
+      "right": 355,
+      "width": 335
+    },
+    "right_edge_delta": -20,
     "design_tile": 82,
     "design_visible": 73,
     "design_hidden": 9,
     "actual_tile": 86,
     "actual_visible": 54,
     "actual_hidden": 32
+  },
+  "h5_image_stroke": {
+    "light_expected": "1px rgba(34,34,34,.03)",
+    "dark_expected": "1px rgba(255,255,255,.05)",
+    "actual_screenshot": "未观察到连续框线",
+    "status": "Needs verification",
+    "verification": "检查固定尺寸 wrapper 的 computed border、border-color、radius、overflow:hidden 与主题 stroke token"
   },
   "icons": {
     "sheet_chevron_design_frame": "24×24",

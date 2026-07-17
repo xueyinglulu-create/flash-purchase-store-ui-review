@@ -41,7 +41,7 @@
   </header>
 
   <section class="grid">
-    <article class="card span-4"><div class="sub">确认问题</div><div class="kpi">17</div><div>P0 2 · P1 12 · P2 3</div></article>
+    <article class="card span-4"><div class="sub">确认问题 / 待确认项</div><div class="kpi">18</div><div>P0 2 · P1 12 · P2 4</div></article>
     <article class="card span-4"><div class="sub">本轮补齐的阻断检查</div><div class="kpi">4</div><div>标注端点回算 · 逐列对齐 · 裁切量 · 重复文本堆叠</div></article>
     <article class="card span-4"><div class="sub">尚未有实现证据</div><div class="kpi">3</div><div>初始空态 · 深色加载/到底 · 运行时代码 token</div></article>
 
@@ -155,11 +155,12 @@
           <tr><td>logo→标题列</td><td>8pt</td><td>约 8pt</td><td class="status pass">Pass</td><td>水平相邻对</td></tr>
           <tr><td>店铺头→商品区</td><td>10pt 组件 gap</td><td>约 12–14pt</td><td class="status verify">漂移</td><td>动态标题/meta 高度需 DOM 复核</td></tr>
           <tr><td>商品图片</td><td>82×82pt</td><td>约 86×86pt</td><td class="status issue">Issue · UI-14</td><td>宽高均 +4pt</td></tr>
+          <tr><td>商品图外框弱描边</td><td>浅色 1px rgba(34,34,34,.03)；深色 1px rgba(255,255,255,.05)</td><td>截图未观察到连续框线；透明/留白图片与面板融合</td><td class="status verify">待代码确认 · UI-18</td><td>需检查固定尺寸 wrapper 的 border、radius、overflow 与主题 stroke token</td></tr>
           <tr><td>商品列局部间距</td><td>12pt</td><td>约 13pt</td><td class="status pass">1pt 漂移</td><td>图片框边缘口径</td></tr>
           <tr><td>商品列 pitch / 左边缘</td><td>94pt；20/114/208/302</td><td>99pt；20/119/218/317</td><td class="status issue">Issue · UI-16</td><td>第 2/3/4 列累计右移 +5/+10/+15pt</td></tr>
           <tr><td>图片→标题</td><td>6pt</td><td>约 6pt</td><td class="status pass">Pass</td><td>纵向相邻对</td></tr>
           <tr><td>标题→价格 frame</td><td>0pt</td><td>约 2–4pt</td><td class="status verify">需 DOM 复核</td><td>截图仅能稳定量墨迹间距</td></tr>
-          <tr><td>内容右侧裁切</td><td>第 4 列图片可见约 73pt / 隐藏约 9pt</td><td>可见约 54pt / 隐藏约 32pt；clip x≈371</td><td class="status issue">Issue · UI-17</td><td>露出模式存在，但裁切量并不等价</td></tr>
+          <tr><td>横滑视口右边界 / 第 4 列裁切</td><td>内容视口 x=20→375，宽 355；第 4 列图片可见约 73pt</td><td>内容视口 x=20→355，宽 335，右边界提前 20px；第 4 列图片仅可见约 54pt</td><td class="status issue">Issue · UI-17</td><td>视口少 20px，叠加列宽/pitch 漂移后导致第四项露出量不足</td></tr>
           <tr><td>滚动条</td><td>设计状态未显示系统条</td><td>部分 Nano 画面显示</td><td class="status verify">未归 H5 缺陷</td><td>容器/录屏状态需运行时确认</td></tr>
         </tbody>
       </table></div>
@@ -197,7 +198,7 @@
           <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status issue">文案/图标</td></tr>
           <tr><td>H5 下拉图标</td><td>右 inset Pass</td><td>中心接近</td><td>N/A</td><td>tint Pass</td><td>墨迹 Issue</td><td>N/A</td><td class="status issue">UI-06</td></tr>
           <tr><td>H5 店铺头</td><td>top 漂移</td><td>左列 Pass</td><td>需 DOM 复核</td><td>次文字 Pass</td><td>logo 42 Pass</td><td>r8 / stroke 需复核</td><td class="status verify">部分需复核</td></tr>
-          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>累计列漂移 +5/+10/+15pt</td><td>数字 family 需 DOM</td><td>价格 Issue</td><td>图片 86 vs 82；末列过度裁切</td><td>边框需像素剖面</td><td class="status issue">UI-10/UI-14/UI-16/UI-17</td></tr>
+          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>累计列漂移 +5/+10/+15pt；视口右边界 -20px</td><td>数字 family 需 DOM</td><td>价格 Issue</td><td>图片 86 vs 82；末列过度裁切</td><td>弱描边待代码确认</td><td class="status issue">UI-10/UI-14/UI-16/UI-17/UI-18</td></tr>
           <tr><td>H5 refresh spinner</td><td>上下空白 Issue</td><td>水平居中 Pass</td><td>N/A</td><td>浅色低对比接近</td><td>21×21 vs 39×40</td><td>N/A</td><td class="status issue">UI-07</td></tr>
           <tr><td>H5 到底文案</td><td>底部留白 Issue</td><td>水平居中 Pass</td><td>实际约更大</td><td>浅灰接近</td><td>53×14 vs 47×12</td><td>N/A</td><td class="status issue">UI-08</td></tr>
         </tbody>
@@ -209,9 +210,9 @@
       <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告的错误间距结论已撤销。</p>
       <ul>
         <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；横纵间距、尺寸、图标、深色颜色均独立建账。</li>
-        <li><b>逐条问题证据门槛：</b>17 条问题记录 = 17 个卡内标注证据图，缺失 0；每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
+        <li><b>逐条问题证据门槛：</b>18 条问题记录 = 18 个卡内主标注证据图，缺失 0；UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
         <li><b>标注坐标门槛：</b>34 条标注记录已写入 transform manifest；所有测量线包含源图坐标、裁切框、缩放倍率和端帽，脚本回算结果 34/34 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
-        <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
+        <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、商品图 wrapper 弱描边、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
         <li><b>报告状态：</b>公开 HTTPS 页面用于查看；状态/备注、忽略折叠和 JSON 导出仍仅使用当前浏览器的 localStorage，不具备跨设备共享同步，因此编辑同步能力仍记为未完成。</li>
         <li><b>证据干扰：</b>绿色触点、紫色录屏区域、vConsole 固定按钮均按测试干扰忽略；未作为产品 UI 缺陷。</li>
       </ul>
@@ -240,14 +241,16 @@ const issues = [
  {id:'UI-14',p:'P1',surface:'H5',title:'商品图片框 86×86pt，设计为 82×82pt',img:'assets/issue-ui-14.png',caption:'红框按外部圆角图片容器测量，设计 82×82pt，实现约 86×86pt。',evidence:'实现商品图宽高均约 +4pt；重复列因此更拥挤并加重右侧裁切。',expect:'商品图外框 82×82pt，列 gap 12pt。',fix:'修正 tile size；图片 object-fit 仅影响内部内容，不要撑大外框。'},
  {id:'UI-15',p:'P0',surface:'H5',title:'商品图片出现纯黑失败占位',img:'assets/issue-ui-15.png',caption:'红框紧贴第 4 个商品图片容器，内部为纯黑失败画面。',evidence:'IMG_3050、IMG_3051 首店铺第 4 个商品图片区域为纯黑色，与其他商品图及 Figma 均不一致。',expect:'资源成功展示；失败时使用设计占位图和可恢复加载策略，不显示黑块。',fix:'排查图片解码/URL/跨域与透明通道；为 onerror 和解码失败统一兜底。'},
  {id:'UI-16',p:'P1',surface:'H5',title:'商品列从第 2 列起累计向右漂移',img:'assets/issue-ui-16.png',caption:'蓝线标出每列图片/标题/价格共同左边缘：设计 20/114/208/302，实现 20/119/218/317。',evidence:'设计列 pitch 94pt，实现约 99pt；第 2/3/4 列相对设计累计右移约 5/10/15pt。旧报告只检查首列和局部 gap，误判“列对齐 Pass”。',expect:'所有商品列按设计 94pt pitch 对齐，图片、标题、价格共享同一列左边。',fix:'将 tile 宽度恢复到 82pt，并把列 gap 固定为 12pt；按完整 pitch 验证而不是只看首列。'},
- {id:'UI-17',p:'P1',surface:'H5',title:'右侧第 4 列内容被过度截断',img:'assets/issue-ui-17.png',caption:'端帽量取最后一列图片实际可见宽度：设计约 73pt，实现仅约 54pt。',evidence:'设计 82pt 图片隐藏约 9pt；实现 86pt 图片在 x≈371 的滚动裁切边界处隐藏约 32pt，多隐藏约 23pt，标题/价格也随列一起贴近裁切边。',expect:'保留设计的轻量“下一列露出”提示，但可见/隐藏比例应与 Figma 接近。',fix:'修正横向滚动容器 clip 边界与右侧 padding；在恢复 82pt tile/94pt pitch 后复测第 4 列可见宽度。'}
+ {id:'UI-17',p:'P1',surface:'H5',title:'商品横滑视口右边界提前 20px，第四项露出量不足',img:'assets/issue-ui-17.png',caption:'主证据按同一图片外框口径量取第四列可见宽度：设计约 73pt，实现约 54pt。',extraImg:'assets/issue-ui-17-viewport.png',extraCaption:'补充证据：设计内容视口 x=20→375、宽 355；实际 x=20→355、宽 335，右边界提前 20px。',evidence:'横滑内容视口右边界较设计提前 20px；同时实现 tile/pitch 偏大，第四列图片由设计可见约 73pt 降至约 54pt，标题和价格也随列过度贴近裁切边。',expect:'内容视口保持 x=20→375、宽 355，并保留与 Figma 接近的轻量“下一列露出”。',fix:'修正横向滚动容器的右侧边界与 padding；恢复 82pt tile/94pt pitch 后，复测视口宽度和第四列可见量。'},
+ {id:'UI-18',p:'P2',surface:'H5 · 浅色/深色',title:'商品图外框的 1px 弱描边可能未呈现',img:'assets/issue-ui-18.png',caption:'用户补充证据原标 UI-008；本报告归并为 UI-18，避免与既有“到底态”UI-08 冲突。设计浅/深主题均有极弱 1px stroke，实现截图未观察到连续框线。',evidence:'Figma：浅色 1px rgba(34,34,34,.03)，深色 1px rgba(255,255,255,.05)；实现截图中透明或留白商品图与 sheet 融为一体，但 3%/5% 透明度不足以仅凭截图确认缺陷。',expect:'固定 82×82 外层 tile 在浅/深主题分别使用对应 1px stroke，并保持 radius 与 overflow:hidden。',fix:'检查商品图 wrapper 的 computed style：border、border-color、radius、overflow:hidden 与主题 stroke token；若代码值正确则关闭此项。',defaultStatus:'待代码确认'}
 ];
 const KEY='flash-store-ui-review-rebuilt-v1';
 function renderIssues(){
  const state=JSON.parse(localStorage.getItem(KEY)||'{}'); const root=document.getElementById('issueList'); root.innerHTML='';
- issues.forEach(it=>{const s=state[it.id]||{};const el=document.createElement('article');el.className='issue-card '+((s.status||'待处理')==='忽略'?'ignored':'');el.dataset.priority=it.p;
- el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态"><option>待处理</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure><div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="记录负责人、修复链接、复测结论…">${s.note||''}</textarea></div></div>`;
- const sel=el.querySelector('select');sel.value=s.status||'待处理';sel.addEventListener('change',()=>{el.classList.toggle('ignored',sel.value==='忽略');saveOne(it.id,sel.value,el.querySelector('textarea').value)});el.querySelector('textarea').addEventListener('input',e=>saveOne(it.id,sel.value,e.target.value));root.appendChild(el);
+ issues.forEach(it=>{const s=state[it.id]||{};const initialStatus=s.status||it.defaultStatus||'待处理';const el=document.createElement('article');el.className='issue-card '+(initialStatus==='忽略'?'ignored':'');el.dataset.priority=it.p;
+ const extraEvidence=it.extraImg?`<figure class="issue-evidence"><img src="${it.extraImg}" alt="${it.id} ${it.title} 补充标注证据"><figcaption><b>${it.id} 补充标注证据：</b>${it.extraCaption}</figcaption></figure>`:'';
+ el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态"><option>待处理</option><option>待代码确认</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure>${extraEvidence}<div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="记录负责人、修复链接、复测结论…">${s.note||''}</textarea></div></div>`;
+ const sel=el.querySelector('select');sel.value=initialStatus;sel.addEventListener('change',()=>{el.classList.toggle('ignored',sel.value==='忽略');saveOne(it.id,sel.value,el.querySelector('textarea').value)});el.querySelector('textarea').addEventListener('input',e=>saveOne(it.id,sel.value,e.target.value));root.appendChild(el);
  });
 }
 function saveOne(id,status,note){const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[id]={status,note};localStorage.setItem(KEY,JSON.stringify(s));document.getElementById('syncState').textContent='本地草稿 · 未同步';}
