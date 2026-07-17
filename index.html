@@ -41,7 +41,7 @@
   </header>
 
   <section class="grid">
-    <article class="card span-4"><div class="sub">确认问题 / 待确认项</div><div class="kpi">18</div><div>P0 2 · P1 12 · P2 4</div></article>
+    <article class="card span-4"><div class="sub">确认问题 / 待确认项</div><div class="kpi">19</div><div>P0 2 · P1 12 · P2 5</div></article>
     <article class="card span-4"><div class="sub">本轮补齐的阻断检查</div><div class="kpi">4</div><div>标注端点回算 · 逐列对齐 · 裁切量 · 重复文本堆叠</div></article>
     <article class="card span-4"><div class="sub">尚未有实现证据</div><div class="kpi">3</div><div>初始空态 · 深色加载/到底 · 运行时代码 token</div></article>
 
@@ -49,6 +49,7 @@
       <h2>结论先行</h2>
       <div class="callout danger"><b>不能验收。</b> H5 在加载与到底态输出 <span class="mono">¥NaN</span>，且存在黑图；这两项属于数据/渲染故障。布局侧，Nano 三行“销量→价格”均多出约 10pt；H5 商品列从第 2 列起累计右移约 5/10/15pt，最右列隐藏量由设计约 9pt 增至约 32pt。</div>
       <div class="callout"><b>深色 token 不是主观观感问题。</b> H5 面板底色实采 <span class="mono">#232323</span>，Figma 为 <span class="mono">#222222</span>；H5 价格实采约 <span class="mono">#EE7F59</span>，Figma 为 <span class="mono">#FF764D</span>，ΔE76 约 12.6。</div>
+      <div class="callout"><b>Nano 深色“更多入口”底圈颜色错误。</b> Figma 截图估计约 <span class="mono">#535353</span>，实现约 <span class="mono">#353535</span>；实际父容器约 <span class="mono">#383838</span>，底圈反而更暗，圆形承托几乎消失。浅色模式底圈约 <span class="mono">#D4D4D4–#D5D5D5</span>，可判通过。</div>
       <div class="callout warn"><b>初始空态仍不能判实现通过。</b> Figma 初始空态已完整测量，但当前 8 张实现截图没有对应的“空列表 + 加载文案”画面；报告明确记为未检查，不再用刷新中或默认列表代替。</div>
     </article>
 
@@ -115,6 +116,8 @@
           <tr><td>Nano 消息卡底色</td><td>#202020</td><td>#212121，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status issue">Issue · UI-12</td></tr>
           <tr><td>Nano 店卡底色</td><td>chat_card_bg · #2D2D2D</td><td>#2E2E2E，n=5+区域</td><td>(+1,+1,+1) / 0.47</td><td class="status issue">Issue · UI-12</td></tr>
           <tr><td>Nano CTA 底色</td><td>rgba(66,110,255,.24) 合成约 #323C5F</td><td>#353D5E，n=5+区域</td><td>(+3,+1,-1) / 1.51</td><td class="status issue">Issue · UI-13</td></tr>
+          <tr><td>Nano 更多入口底圈 · 深色</td><td>截图估计 #535353；父容器 #373737</td><td>截图估计 #353535；父容器 #383838</td><td>(-30,-30,-30) / 13.14</td><td class="status issue">Issue · UI-19</td></tr>
+          <tr><td>Nano 更多入口底圈 · 浅色</td><td>截图估计 #D5D5D5</td><td>截图估计 #D4D4D4–#D5D5D5</td><td>0～-1 RGB</td><td class="status pass">Pass</td></tr>
           <tr><td>深色加载 / 到底 token</td><td>需对应 Figma 状态</td><td>无实现深色截图</td><td>—</td><td class="status verify">未检查</td></tr>
         </tbody>
       </table></div>
@@ -194,7 +197,7 @@
           <tr><td>Nano 商品行 ×3</td><td>内部纵向 Issue</td><td>列对齐 Pass</td><td>数字 family 需代码复核</td><td>价格浅/深基本一致</td><td>56×56 Pass</td><td>图片 chrome 需边缘证据</td><td class="status issue">UI-02</td></tr>
           <tr><td>Nano 推荐语</td><td>上间距 Issue</td><td>左对齐 Pass</td><td>字号/行高接近</td><td>主文字 Pass</td><td>2 行适配</td><td>N/A</td><td class="status issue">UI-02</td></tr>
           <tr><td>Nano CTA</td><td>上下留白 Issue</td><td>居中 Pass</td><td>14/500 接近</td><td>深色底色 Issue</td><td>h40 Pass</td><td>r10 Pass</td><td class="status issue">UI-13</td></tr>
-          <tr><td>Nano 更多入口</td><td>卡片间 gap Issue</td><td>居中 Pass</td><td>12/600 接近</td><td>深色灰需 token</td><td>icon 墨迹 Pass</td><td>圆形底 16 Pass</td><td class="status issue">UI-03</td></tr>
+          <tr><td>Nano 更多入口</td><td>卡片间 gap Issue</td><td>居中 Pass</td><td>12/600 接近</td><td>深色底圈 Issue；浅色 Pass</td><td>icon 墨迹 Pass</td><td>圆形底 16 Pass</td><td class="status issue">UI-03/UI-19</td></tr>
           <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status issue">文案/图标</td></tr>
           <tr><td>H5 下拉图标</td><td>右 inset Pass</td><td>中心接近</td><td>N/A</td><td>tint Pass</td><td>墨迹 Issue</td><td>N/A</td><td class="status issue">UI-06</td></tr>
           <tr><td>H5 店铺头</td><td>top 漂移</td><td>左列 Pass</td><td>需 DOM 复核</td><td>次文字 Pass</td><td>logo 42 Pass</td><td>r8 / stroke 需复核</td><td class="status verify">部分需复核</td></tr>
@@ -210,8 +213,8 @@
       <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告的错误间距结论已撤销。</p>
       <ul>
         <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；横纵间距、尺寸、图标、深色颜色均独立建账。</li>
-        <li><b>逐条问题证据门槛：</b>18 条问题记录 = 18 个卡内主标注证据图，缺失 0；UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
-        <li><b>标注坐标门槛：</b>34 条标注记录已写入 transform manifest；所有测量线包含源图坐标、裁切框、缩放倍率和端帽，脚本回算结果 34/34 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
+        <li><b>逐条问题证据门槛：</b>19 条问题记录 = 19 个卡内主标注证据图，缺失 0；UI-17 另附横滑视口宽度补充证据。每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
+        <li><b>标注坐标门槛：</b>36 条标注记录已写入 transform manifest；所有测量线/框包含源图坐标、裁切框与缩放倍率，脚本回算结果 36/36 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
         <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、商品图 wrapper 弱描边、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
         <li><b>报告状态：</b>公开 HTTPS 页面用于查看；状态/备注、忽略折叠和 JSON 导出仍仅使用当前浏览器的 localStorage，不具备跨设备共享同步，因此编辑同步能力仍记为未完成。</li>
         <li><b>证据干扰：</b>绿色触点、紫色录屏区域、vConsole 固定按钮均按测试干扰忽略；未作为产品 UI 缺陷。</li>
@@ -242,7 +245,8 @@ const issues = [
  {id:'UI-15',p:'P0',surface:'H5',title:'商品图片出现纯黑失败占位',img:'assets/issue-ui-15.png',caption:'红框紧贴第 4 个商品图片容器，内部为纯黑失败画面。',evidence:'IMG_3050、IMG_3051 首店铺第 4 个商品图片区域为纯黑色，与其他商品图及 Figma 均不一致。',expect:'资源成功展示；失败时使用设计占位图和可恢复加载策略，不显示黑块。',fix:'排查图片解码/URL/跨域与透明通道；为 onerror 和解码失败统一兜底。'},
  {id:'UI-16',p:'P1',surface:'H5',title:'商品列从第 2 列起累计向右漂移',img:'assets/issue-ui-16.png',caption:'蓝线标出每列图片/标题/价格共同左边缘：设计 20/114/208/302，实现 20/119/218/317。',evidence:'设计列 pitch 94pt，实现约 99pt；第 2/3/4 列相对设计累计右移约 5/10/15pt。旧报告只检查首列和局部 gap，误判“列对齐 Pass”。',expect:'所有商品列按设计 94pt pitch 对齐，图片、标题、价格共享同一列左边。',fix:'将 tile 宽度恢复到 82pt，并把列 gap 固定为 12pt；按完整 pitch 验证而不是只看首列。'},
  {id:'UI-17',p:'P1',surface:'H5',title:'商品横滑视口右边界提前 20px，第四项露出量不足',img:'assets/issue-ui-17.png',caption:'主证据按同一图片外框口径量取第四列可见宽度：设计约 73pt，实现约 54pt。',extraImg:'assets/issue-ui-17-viewport.png',extraCaption:'补充证据：设计内容视口 x=20→375、宽 355；实际 x=20→355、宽 335，右边界提前 20px。',evidence:'横滑内容视口右边界较设计提前 20px；同时实现 tile/pitch 偏大，第四列图片由设计可见约 73pt 降至约 54pt，标题和价格也随列过度贴近裁切边。',expect:'内容视口保持 x=20→375、宽 355，并保留与 Figma 接近的轻量“下一列露出”。',fix:'修正横向滚动容器的右侧边界与 padding；恢复 82pt tile/94pt pitch 后，复测视口宽度和第四列可见量。'},
- {id:'UI-18',p:'P2',surface:'H5 · 浅色/深色',title:'商品图外框的 1px 弱描边可能未呈现',img:'assets/issue-ui-18.png',caption:'用户补充证据原标 UI-008；本报告归并为 UI-18，避免与既有“到底态”UI-08 冲突。设计浅/深主题均有极弱 1px stroke，实现截图未观察到连续框线。',evidence:'Figma：浅色 1px rgba(34,34,34,.03)，深色 1px rgba(255,255,255,.05)；实现截图中透明或留白商品图与 sheet 融为一体，但 3%/5% 透明度不足以仅凭截图确认缺陷。',expect:'固定 82×82 外层 tile 在浅/深主题分别使用对应 1px stroke，并保持 radius 与 overflow:hidden。',fix:'检查商品图 wrapper 的 computed style：border、border-color、radius、overflow:hidden 与主题 stroke token；若代码值正确则关闭此项。',defaultStatus:'待代码确认'}
+ {id:'UI-18',p:'P2',surface:'H5 · 浅色/深色',title:'商品图外框的 1px 弱描边可能未呈现',img:'assets/issue-ui-18.png',caption:'用户补充证据原标 UI-008；本报告归并为 UI-18，避免与既有“到底态”UI-08 冲突。设计浅/深主题均有极弱 1px stroke，实现截图未观察到连续框线。',evidence:'Figma：浅色 1px rgba(34,34,34,.03)，深色 1px rgba(255,255,255,.05)；实现截图中透明或留白商品图与 sheet 融为一体，但 3%/5% 透明度不足以仅凭截图确认缺陷。',expect:'固定 82×82 外层 tile 在浅/深主题分别使用对应 1px stroke，并保持 radius 与 overflow:hidden。',fix:'检查商品图 wrapper 的 computed style：border、border-color、radius、overflow:hidden 与主题 stroke token；若代码值正确则关闭此项。',defaultStatus:'待代码确认'},
+ {id:'UI-19',p:'P2',surface:'Nano · 深色',title:'更多入口底圈颜色过暗，圆形承托几乎消失',img:'assets/issue-ui-19.png',caption:'红框紧贴底圈区域；分别取底圈内部稳定像素和父容器纯色面。Figma 底圈约 #535353、父容器 #373737；实现底圈约 #353535、父容器 #383838。',evidence:'深色底圈实现比设计低约 30 RGB，ΔE76 约 13.14；且比实际父容器还暗 3 RGB，导致底圈对比方向与设计相反。浅色底圈设计约 #D5D5D5、实现约 #D4D4D4–#D5D5D5，可判通过。',expect:'深色入口底圈使用与 Figma 一致的语义色，使圆形底明显亮于父容器；箭头 tint 保持独立 token。',fix:'将底圈 background 从父容器/近似灰中拆出，绑定深色主题 circle-fill token；复测底圈、父容器和箭头 tint 三项，不要只改箭头颜色。'}
 ];
 const KEY='flash-store-ui-review-rebuilt-v1';
 function renderIssues(){

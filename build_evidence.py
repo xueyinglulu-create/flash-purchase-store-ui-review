@@ -379,6 +379,20 @@ def main():
             target_width=500, evidence_id="UI-17-actual",
         )),
     ])
+    save_issue("issue-ui-19.png", "UI-19 · 深色更多入口底圈颜色过暗", [
+        ("Figma · 深色", annotated_crop(
+            "figma-card-dark.png", (298, 455, 352, 530),
+            "底圈填充截图估计 #535353；父容器 #373737",
+            rects=((314, 492, 334, 512),),
+            target_width=500, evidence_id="UI-19-figma",
+        )),
+        ("Nano 实现 · 深色", annotated_crop(
+            "actual-nano-dark-entry.png", (316, 390, 370, 465),
+            "底圈约 #353535；父容器 #383838",
+            rects=((333, 426, 353, 446),),
+            target_width=500, evidence_id="UI-19-actual",
+        )),
+    ])
 
     # Overall comparisons.
     nano = framed("Nano 店铺卡片与更多入口", [
@@ -417,8 +431,41 @@ def main():
         "refresh_loading": {"design_spinner": "39×40", "actual_spinner": "21×21", "delta": "-18×-19", "design_content_to_spinner": 30, "actual_content_to_spinner": 36},
         "end_state": {"design_text": "47×11", "actual_text": "53×14", "design_bottom_gap": 51, "actual_bottom_gap": 23, "bottom_gap_delta": -28},
         "h5_columns": {"design_left_edges": [20, 114, 208, 302], "actual_left_edges": [20, 119, 218, 317], "design_pitch": 94, "actual_pitch": 99, "cumulative_drift": [0, 5, 10, 15]},
-        "h5_right_clip": {"design_tile": 82, "design_visible": 73, "design_hidden": 9, "actual_tile": 86, "actual_visible": 54, "actual_hidden": 32},
+        "h5_right_clip": {
+            "design_viewport": {"left": 20, "right": 375, "width": 355},
+            "actual_viewport": {"left": 20, "right": 355, "width": 335},
+            "right_edge_delta": -20,
+            "design_tile": 82,
+            "design_visible": 73,
+            "design_hidden": 9,
+            "actual_tile": 86,
+            "actual_visible": 54,
+            "actual_hidden": 32,
+        },
+        "h5_image_stroke": {
+            "light_expected": "1px rgba(34,34,34,.03)",
+            "dark_expected": "1px rgba(255,255,255,.05)",
+            "actual_screenshot": "未观察到连续框线",
+            "status": "Needs verification",
+            "verification": "检查固定尺寸 wrapper 的 computed border、border-color、radius、overflow:hidden 与主题 stroke token",
+        },
         "icons": {"sheet_chevron_design_frame": "24×24", "sheet_chevron_design_ink": "18×9", "sheet_chevron_actual_frame": "Needs verification", "sheet_chevron_actual_ink": "11×6"},
+        "more_entry_circle_colors": {
+            "light": {
+                "design_screenshot_estimated": "#D5D5D5",
+                "actual_screenshot_estimated": "#D4D4D4–#D5D5D5",
+                "status": "Pass",
+            },
+            "dark": {
+                "design_screenshot_estimated": "#535353",
+                "actual_screenshot_estimated": "#353535",
+                "design_parent": "#373737",
+                "actual_parent": "#383838",
+                "delta_rgb": [-30, -30, -30],
+                "delta_e76": 13.14,
+                "status": "Issue",
+            },
+        },
         "dark_colors": colors,
     }
     (ROOT / "measurements.json").write_text(json.dumps(measurements, ensure_ascii=False, indent=2), encoding="utf-8")

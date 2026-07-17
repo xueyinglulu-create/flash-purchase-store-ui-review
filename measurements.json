@@ -83,6 +83,26 @@
     "sheet_chevron_actual_frame": "Needs verification",
     "sheet_chevron_actual_ink": "11×6"
   },
+  "more_entry_circle_colors": {
+    "light": {
+      "design_screenshot_estimated": "#D5D5D5",
+      "actual_screenshot_estimated": "#D4D4D4–#D5D5D5",
+      "status": "Pass"
+    },
+    "dark": {
+      "design_screenshot_estimated": "#535353",
+      "actual_screenshot_estimated": "#353535",
+      "design_parent": "#373737",
+      "actual_parent": "#383838",
+      "delta_rgb": [
+        -30,
+        -30,
+        -30
+      ],
+      "delta_e76": 13.14,
+      "status": "Issue"
+    }
+  },
   "dark_colors": [
     {
       "element": "H5 面板底色",

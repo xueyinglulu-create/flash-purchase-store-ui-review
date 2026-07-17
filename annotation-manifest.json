@@ -1088,6 +1088,68 @@
     "endpoint_tolerance": "≤1 source px/logical unit"
   },
   {
+    "evidence_id": "UI-19-figma",
+    "source": "figma-card-dark.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      298,
+      455,
+      352,
+      530
+    ],
+    "render_scale": 9.25925925925926,
+    "rects_source": [
+      [
+        314,
+        492,
+        334,
+        512
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-19-actual",
+    "source": "actual-nano-dark-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      316,
+      390,
+      370,
+      465
+    ],
+    "render_scale": 9.25925925925926,
+    "rects_source": [
+      [
+        333,
+        426,
+        353,
+        446
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
     "evidence_id": "overview-nano-figma",
     "source": "figma-card-light.png",
     "source_size": [
