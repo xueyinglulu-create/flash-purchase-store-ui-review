@@ -12,6 +12,11 @@ create table if not exists public.ui_review_issue_state (
 
 alter table public.ui_review_issue_state enable row level security;
 
+grant usage on schema public to anon, authenticated;
+revoke all on public.ui_review_issue_state from anon, authenticated;
+grant select on public.ui_review_issue_state to anon, authenticated;
+grant insert, update on public.ui_review_issue_state to authenticated;
+
 drop policy if exists "Public can read review state" on public.ui_review_issue_state;
 create policy "Public can read review state"
 on public.ui_review_issue_state
@@ -51,6 +56,27 @@ drop trigger if exists ui_review_issue_state_stamp on public.ui_review_issue_sta
 create trigger ui_review_issue_state_stamp
 before insert or update on public.ui_review_issue_state
 for each row execute function public.stamp_ui_review_issue_state();
+
+insert into public.ui_review_issue_state (report_id, issue_id, status, note)
+select
+  'flash-purchase-store-ui-review-v1',
+  issue_id,
+  case
+    when issue_id in (
+      'UI-01', 'UI-05', 'UI-09', 'UI-10', 'UI-11',
+      'UI-12', 'UI-13', 'UI-14', 'UI-15', 'UI-16'
+    ) then '忽略'
+    when issue_id = 'UI-18' then '待代码确认'
+    else '待处理'
+  end,
+  ''
+from unnest(array[
+  'UI-01', 'UI-02', 'UI-03', 'UI-04', 'UI-05',
+  'UI-06', 'UI-07', 'UI-08', 'UI-09', 'UI-10',
+  'UI-11', 'UI-12', 'UI-13', 'UI-14', 'UI-15',
+  'UI-16', 'UI-17', 'UI-18', 'UI-19'
+]) as issue_id
+on conflict (report_id, issue_id) do nothing;
 
 do $$
 begin
