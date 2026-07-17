@@ -9,7 +9,7 @@
     *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
     a{color:var(--blue)} button,select,input,textarea{font:inherit} .wrap{max-width:1240px;margin:auto;padding:0 22px 72px}
     .toolbar{position:sticky;top:0;z-index:30;margin:0 -22px 24px;padding:12px 22px;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;overflow:auto;box-shadow:0 6px 20px rgba(15,23,42,.05)}
-    .toolbar strong{white-space:nowrap;margin-right:auto}.toolbar button{white-space:nowrap;border:1px solid #cfd7e4;background:#fff;border-radius:9px;padding:8px 12px;cursor:pointer}.sync{white-space:nowrap;color:var(--orange);font-size:12px}
+    .toolbar strong{white-space:nowrap;margin-right:auto}.toolbar button{white-space:nowrap;border:1px solid #cfd7e4;background:#fff;border-radius:9px;padding:8px 12px;cursor:pointer}.toolbar button:disabled{cursor:not-allowed;opacity:.55}.sync{white-space:nowrap;color:var(--orange);font-size:12px}.sync.ok{color:var(--green)}.sync.error{color:var(--red)}.identity{white-space:nowrap;color:var(--muted);font-size:12px}
     header{background:linear-gradient(145deg,#0f172a,#25345a 66%,#315efb);color:white;border-radius:24px;padding:34px;margin:20px 0 24px;box-shadow:var(--shadow)}
     header h1{font-size:34px;line-height:1.22;margin:0 0 12px} header p{max-width:900px;color:#dbe5ff;margin:5px 0}.tag{display:inline-flex;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.12);margin:12px 6px 0 0}
     .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}
@@ -17,7 +17,7 @@
     figure{margin:14px 0}figure img{display:block;width:100%;max-height:820px;object-fit:contain;background:#eef2f7;border:1px solid var(--line);border-radius:12px;cursor:zoom-in}figcaption{color:var(--muted);margin-top:7px;font-size:12px}
     table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;overflow:hidden}th,td{padding:10px 11px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f4f9;text-align:left;position:sticky;top:58px;z-index:2}tr>*:first-child{border-left:1px solid var(--line)}thead tr:first-child>*{border-top:1px solid var(--line)}thead tr:first-child>*:first-child{border-top-left-radius:10px}thead tr:first-child>*:last-child{border-top-right-radius:10px}.table-scroll{overflow:auto;max-height:650px}
     .status{font-weight:700}.issue{color:var(--red)}.pass{color:var(--green)}.verify{color:var(--orange)}.adapt{color:var(--violet)}
-    .issues{display:grid;gap:12px}.issue-card{border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:13px;background:#fff;overflow:hidden}.issue-card[data-priority="P0"]{border-left-color:var(--red)}.issue-card[data-priority="P2"]{border-left-color:#64748b}.issue-head{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;padding:14px 16px;background:#f8fafc}.badge{font-weight:800;padding:2px 8px;border-radius:99px;background:#e8edf6}.issue-body{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.issue-evidence{grid-column:1/-1;margin:14px 0 2px}.issue-evidence img{max-height:680px;background:#f3f6fa}.issue-evidence figcaption{font-size:13px;color:#52627a}.issue-body p{margin:11px 0}.issue-body textarea{width:100%;min-height:78px;border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical}.issue-card.ignored .issue-body{display:none}.issue-card select{border:1px solid #cfd7e4;border-radius:8px;padding:6px;background:#fff}
+    .issues{display:grid;gap:12px}.issue-card{border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:13px;background:#fff;overflow:hidden}.issue-card[data-priority="P0"]{border-left-color:var(--red)}.issue-card[data-priority="P2"]{border-left-color:#64748b}.issue-head{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;padding:14px 16px;background:#f8fafc}.badge{font-weight:800;padding:2px 8px;border-radius:99px;background:#e8edf6}.issue-body{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.issue-evidence{grid-column:1/-1;margin:14px 0 2px}.issue-evidence img{max-height:680px;background:#f3f6fa}.issue-evidence figcaption{font-size:13px;color:#52627a}.issue-body p{margin:11px 0}.issue-body textarea{width:100%;min-height:78px;border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical}.issue-body textarea:disabled,.issue-card select:disabled{background:#f3f5f8;color:#64748b;cursor:not-allowed}.issue-card.ignored .issue-body{display:none}.issue-card select{border:1px solid #cfd7e4;border-radius:8px;padding:6px;background:#fff}
     .legend{display:flex;gap:12px;flex-wrap:wrap}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px}.foot{color:var(--muted);font-size:12px;margin-top:22px}.nowrap{white-space:nowrap}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.lightbox{position:fixed;inset:0;z-index:100;background:rgba(3,7,18,.92);display:none;align-items:center;justify-content:center;padding:24px}.lightbox.open{display:flex}.lightbox img{max-width:96vw;max-height:92vh;object-fit:contain}.lightbox button{position:absolute;right:22px;top:18px;border:0;background:#fff;color:#111;border-radius:50%;width:40px;height:40px;font-size:24px;cursor:pointer}
     @media(max-width:800px){.span-8,.span-6,.span-4{grid-column:span 12}header{padding:24px}header h1{font-size:27px}.issue-body{grid-template-columns:1fr}.issue-head{grid-template-columns:auto auto 1fr}.issue-head select{grid-column:1/-1}.wrap{padding-left:14px;padding-right:14px}.toolbar{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}}
     @media print{.toolbar{display:none}.wrap{max-width:none}.card{break-inside:avoid;box-shadow:none}.issue-card{break-inside:avoid}th{position:static}}
@@ -27,11 +27,13 @@
 <div class="wrap">
   <div class="toolbar">
     <strong>闪购 Chat · UI Review</strong>
-    <span class="sync" id="syncState">本地草稿 · 未同步</span>
-    <button onclick="saveDraft()">保存本地草稿</button>
+    <span class="sync" id="syncState">协作服务连接中</span>
+    <span class="identity" id="authIdentity">匿名查看</span>
+    <button id="authBtn" onclick="loginCollaborator()">登录协作</button>
+    <button id="syncBtn" onclick="syncAll()">保存并同步</button>
     <button onclick="exportJson()">导出 JSON</button>
     <button onclick="window.print()">打印 / PDF</button>
-    <button onclick="resetDraft()">重置状态</button>
+    <button onclick="resetDraft()">放弃本地修改</button>
   </div>
 
   <header>
@@ -227,6 +229,8 @@
 
 <div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button aria-label="关闭">×</button><img alt="放大预览"></div>
 
+<script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2"></script>
+<script src="collaboration-config.js"></script>
 <script>
 const issues = [
  {id:'UI-01',p:'P0',surface:'H5',title:'加载与到底态价格输出 ¥NaN',img:'assets/issue-ui-01.png',caption:'红框逐行标出异常现价；截图直接证明 NaN 已进入展示层。',evidence:'IMG_3050、IMG_3051 的多件商品现价均显示 ¥NaN，旧价仍存在。',expect:'输出有效价格；无价格时使用明确占位/隐藏策略，不允许 NaN 进入 UI。',fix:'在格式化前校验 number/finite；统一币种组件的空值与异常兜底。'},
@@ -251,19 +255,196 @@ const issues = [
 ];
 const DEFAULT_IGNORED=new Set(['UI-01','UI-05','UI-09','UI-10','UI-11','UI-12','UI-13','UI-14','UI-15','UI-16']);
 const KEY='flash-store-ui-review-rebuilt-v2';
+const DIRTY_KEY='flash-store-ui-review-rebuilt-dirty-v1';
+const COLLAB=window.UI_REVIEW_COLLAB||{};
+const REPORT_ID=COLLAB.reportId||'flash-purchase-store-ui-review-v1';
+const collaborative=Boolean(COLLAB.enabled&&COLLAB.supabaseUrl&&COLLAB.supabaseAnonKey);
+let client=null;
+let session=null;
+let channel=null;
+let syncTimer=null;
+let appState=JSON.parse(localStorage.getItem(KEY)||'{}');
+let dirty=new Set(JSON.parse(localStorage.getItem(DIRTY_KEY)||'[]'));
+if(!localStorage.getItem(DIRTY_KEY)&&Object.keys(appState).length) dirty=new Set(Object.keys(appState));
+
+function escapeHtml(value){
+ return String(value??'').replace(/[&<>"']/g,ch=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[ch]));
+}
+function persistLocal(){
+ localStorage.setItem(KEY,JSON.stringify(appState));
+ localStorage.setItem(DIRTY_KEY,JSON.stringify([...dirty]));
+}
+function setSyncState(text,kind=''){
+ const el=document.getElementById('syncState');
+ el.textContent=text;
+ el.className='sync'+(kind?' '+kind:'');
+}
+function formatSyncTime(value){
+ if(!value) return '';
+ const d=new Date(value);
+ return Number.isNaN(d.getTime())?'':d.toLocaleString('zh-CN',{hour12:false});
+}
+function updateAuthUI(){
+ const identity=document.getElementById('authIdentity');
+ const authBtn=document.getElementById('authBtn');
+ const syncBtn=document.getElementById('syncBtn');
+ if(!collaborative){
+  identity.textContent='本地模式';
+  authBtn.textContent='协作待配置';
+  authBtn.disabled=true;
+  syncBtn.disabled=false;
+  return;
+ }
+ if(session){
+  identity.textContent=session.user.email||'已登录协作者';
+  authBtn.textContent='退出协作';
+  authBtn.disabled=false;
+  syncBtn.disabled=false;
+ }else{
+  identity.textContent='匿名查看';
+  authBtn.textContent='登录协作';
+  authBtn.disabled=false;
+  syncBtn.disabled=true;
+ }
+}
 function renderIssues(){
- const state=JSON.parse(localStorage.getItem(KEY)||'{}'); const root=document.getElementById('issueList'); root.innerHTML='';
- issues.forEach(it=>{const s=state[it.id]||{};const initialStatus=s.status||(DEFAULT_IGNORED.has(it.id)?'忽略':it.defaultStatus)||'待处理';const el=document.createElement('article');el.className='issue-card '+(initialStatus==='忽略'?'ignored':'');el.dataset.priority=it.p;
+ const root=document.getElementById('issueList'); root.innerHTML='';
+ const editingAllowed=!collaborative||Boolean(session);
+ issues.forEach(it=>{const s=appState[it.id]||{};const initialStatus=s.status||(DEFAULT_IGNORED.has(it.id)?'忽略':it.defaultStatus)||'待处理';const el=document.createElement('article');el.className='issue-card '+(initialStatus==='忽略'?'ignored':'');el.dataset.priority=it.p;
  const extraEvidence=it.extraImg?`<figure class="issue-evidence"><img src="${it.extraImg}" alt="${it.id} ${it.title} 补充标注证据"><figcaption><b>${it.id} 补充标注证据：</b>${it.extraCaption}</figcaption></figure>`:'';
- el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态"><option>待处理</option><option>待代码确认</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure>${extraEvidence}<div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="记录负责人、修复链接、复测结论…">${s.note||''}</textarea></div></div>`;
+ el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态" ${editingAllowed?'':'disabled title="登录后可编辑"'}><option>待处理</option><option>待代码确认</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure>${extraEvidence}<div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="${editingAllowed?'记录负责人、修复链接、复测结论…':'登录后可编辑并同步'}" ${editingAllowed?'':'disabled'}>${escapeHtml(s.note||'')}</textarea></div></div>`;
  const sel=el.querySelector('select');sel.value=initialStatus;sel.addEventListener('change',()=>{el.classList.toggle('ignored',sel.value==='忽略');saveOne(it.id,sel.value,el.querySelector('textarea').value)});el.querySelector('textarea').addEventListener('input',e=>saveOne(it.id,sel.value,e.target.value));root.appendChild(el);
  });
 }
-function saveOne(id,status,note){const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[id]={status,note};localStorage.setItem(KEY,JSON.stringify(s));document.getElementById('syncState').textContent='本地草稿 · 未同步';}
-function saveDraft(){document.getElementById('syncState').textContent='已保存到本机 · 未同步';}
-function exportJson(){const blob=new Blob([JSON.stringify({report:'flash-store-ui-review-rebuilt',savedAt:new Date().toISOString(),state:JSON.parse(localStorage.getItem(KEY)||'{}')},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='flash-store-ui-review-state.json';a.click();URL.revokeObjectURL(a.href)}
-function resetDraft(){if(confirm('清空本报告在当前浏览器的状态与备注？')){localStorage.removeItem(KEY);renderIssues();document.getElementById('syncState').textContent='本地草稿 · 未同步'}}
-const lb=document.getElementById('lightbox'),lbimg=lb.querySelector('img');document.addEventListener('click',e=>{if(e.target.matches('figure img')){lbimg.src=e.target.src;lb.classList.add('open')}if(e.target===lb||e.target===lb.querySelector('button'))lb.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});renderIssues();
+function saveOne(id,status,note){
+ appState[id]={status,note};
+ dirty.add(id);
+ persistLocal();
+ setSyncState(collaborative?(session?'未同步':'未同步 · 登录后保存'):'本地草稿 · 协作待配置');
+ if(collaborative&&session){
+  clearTimeout(syncTimer);
+  syncTimer=setTimeout(syncAll,700);
+ }
+}
+async function fetchRemoteState(){
+ if(!client) return;
+ const {data,error}=await client.from('ui_review_issue_state').select('issue_id,status,note,updated_at').eq('report_id',REPORT_ID);
+ if(error){
+  setSyncState('同步失败 · 远端读取异常','error');
+  return;
+ }
+ let latest='';
+ for(const row of data||[]){
+  if(!dirty.has(row.issue_id)) appState[row.issue_id]={status:row.status,note:row.note||''};
+  if(row.updated_at&&(!latest||row.updated_at>latest)) latest=row.updated_at;
+ }
+ persistLocal();
+ renderIssues();
+ setSyncState(dirty.size?(session?'未同步':'未同步 · 登录后保存'):`已同步${latest?' · '+formatSyncTime(latest):''}`,dirty.size?'':'ok');
+}
+async function syncAll(){
+ if(!collaborative){
+  persistLocal();
+  setSyncState('已保存到本机 · 协作待配置');
+  return;
+ }
+ if(!session){
+  setSyncState('未同步 · 请先登录','error');
+  return;
+ }
+ const ids=[...dirty];
+ if(!ids.length){
+  setSyncState('已同步','ok');
+  return;
+ }
+ setSyncState('同步中');
+ document.getElementById('syncBtn').disabled=true;
+ const rows=ids.map(id=>({report_id:REPORT_ID,issue_id:id,status:appState[id].status,note:appState[id].note||''}));
+ const {data,error}=await client.from('ui_review_issue_state').upsert(rows,{onConflict:'report_id,issue_id'}).select('issue_id,updated_at');
+ document.getElementById('syncBtn').disabled=false;
+ if(error){
+  setSyncState('同步失败 · 本地修改已保留','error');
+  return;
+ }
+ for(const row of data||[]) dirty.delete(row.issue_id);
+ persistLocal();
+ const latest=(data||[]).map(row=>row.updated_at).filter(Boolean).sort().at(-1);
+ setSyncState(`已同步${latest?' · '+formatSyncTime(latest):''}`,'ok');
+}
+async function loginCollaborator(){
+ if(!collaborative){
+  alert('协作服务尚未配置。');
+  return;
+ }
+ if(session){
+  await client.auth.signOut();
+  return;
+ }
+ const email=prompt('请输入用于协作登录的邮箱。系统会发送登录链接：');
+ if(!email) return;
+ setSyncState('正在发送登录链接');
+ const redirectTo=location.origin+location.pathname;
+ const {error}=await client.auth.signInWithOtp({email,options:{emailRedirectTo:redirectTo}});
+ if(error){
+  setSyncState('登录链接发送失败','error');
+  alert(error.message);
+  return;
+ }
+ setSyncState('登录链接已发送 · 请检查邮箱','ok');
+}
+function subscribeRemote(){
+ if(!client||channel) return;
+ channel=client.channel(`review-${REPORT_ID}`)
+  .on('postgres_changes',{event:'*',schema:'public',table:'ui_review_issue_state',filter:`report_id=eq.${REPORT_ID}`},payload=>{
+   const row=payload.new;
+   if(!row||!row.issue_id) return;
+   if(dirty.has(row.issue_id)){
+    setSyncState(`存在远端更新 · ${row.issue_id} 本地修改未覆盖`,'error');
+    return;
+   }
+   appState[row.issue_id]={status:row.status,note:row.note||''};
+   persistLocal();
+   renderIssues();
+   setSyncState(`已同步 · ${formatSyncTime(row.updated_at)}`,'ok');
+  }).subscribe();
+}
+async function initializeCollaboration(){
+ renderIssues();
+ updateAuthUI();
+ if(!collaborative){
+  setSyncState('本地草稿 · 协作待配置');
+  return;
+ }
+ if(!window.supabase?.createClient){
+  setSyncState('同步失败 · 协作组件未加载','error');
+  return;
+ }
+ client=window.supabase.createClient(COLLAB.supabaseUrl,COLLAB.supabaseAnonKey);
+ const {data,error}=await client.auth.getSession();
+ if(error) setSyncState('同步失败 · 登录状态读取异常','error');
+ session=data?.session||null;
+ updateAuthUI();
+ await fetchRemoteState();
+ subscribeRemote();
+ client.auth.onAuthStateChange((_event,nextSession)=>{
+  setTimeout(async()=>{
+   session=nextSession;
+   updateAuthUI();
+   await fetchRemoteState();
+  },0);
+ });
+}
+function exportJson(){const blob=new Blob([JSON.stringify({report:REPORT_ID,savedAt:new Date().toISOString(),dirty:[...dirty],state:appState},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='flash-store-ui-review-state.json';a.click();URL.revokeObjectURL(a.href)}
+async function resetDraft(){
+ if(!confirm('放弃当前浏览器中尚未同步的修改，并重新读取远端状态？')) return;
+ localStorage.removeItem(KEY);
+ localStorage.removeItem(DIRTY_KEY);
+ appState={};
+ dirty.clear();
+ if(collaborative) await fetchRemoteState(); else {renderIssues();setSyncState('本地草稿 · 协作待配置')}
+}
+const lb=document.getElementById('lightbox'),lbimg=lb.querySelector('img');document.addEventListener('click',e=>{if(e.target.matches('figure img')){lbimg.src=e.target.src;lb.classList.add('open')}if(e.target===lb||e.target===lb.querySelector('button'))lb.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});
+initializeCollaboration();
 </script>
 </body>
 </html>
