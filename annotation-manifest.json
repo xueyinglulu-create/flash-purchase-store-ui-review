@@ -1,0 +1,1284 @@
+[
+  {
+    "evidence_id": "",
+    "source": "actual-h5-loading.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      150,
+      393,
+      790
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        18,
+        270,
+        374,
+        307
+      ],
+      [
+        18,
+        508,
+        374,
+        535
+      ],
+      [
+        18,
+        742,
+        374,
+        770
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-02-figma",
+    "source": "figma-card-light.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      100,
+      340,
+      305,
+      575
+    ],
+    "render_scale": 2.5365853658536586,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        292,
+        386,
+        292,
+        388,
+        "vertical",
+        "2"
+      ],
+      [
+        292,
+        450,
+        292,
+        452,
+        "vertical",
+        "2"
+      ],
+      [
+        292,
+        514,
+        292,
+        516,
+        "vertical",
+        "2"
+      ],
+      [
+        292,
+        526,
+        292,
+        540,
+        "vertical",
+        "14"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-02-actual",
+    "source": "actual-nano-light-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      130,
+      295,
+      320,
+      545
+    ],
+    "render_scale": 2.736842105263158,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        308,
+        333,
+        308,
+        345,
+        "vertical",
+        "12"
+      ],
+      [
+        308,
+        397,
+        308,
+        409,
+        "vertical",
+        "12"
+      ],
+      [
+        308,
+        461,
+        308,
+        473,
+        "vertical",
+        "12"
+      ],
+      [
+        308,
+        483,
+        308,
+        507,
+        "vertical",
+        "24"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-03-figma",
+    "source": "figma-card-light.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      270,
+      265,
+      365,
+      645
+    ],
+    "render_scale": 3.789473684210526,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        290,
+        455,
+        300,
+        455,
+        "horizontal",
+        "10pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-03-actual",
+    "source": "actual-nano-light-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      285,
+      225,
+      380,
+      610
+    ],
+    "render_scale": 3.789473684210526,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        312,
+        455,
+        318,
+        455,
+        "horizontal",
+        "6pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      130,
+      375,
+      812
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        0,
+        203,
+        374,
+        811
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      40,
+      393,
+      852
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        0,
+        86,
+        392,
+        851
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      190,
+      375,
+      275
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        18,
+        215,
+        190,
+        249
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      78,
+      393,
+      160
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        18,
+        102,
+        113,
+        135
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-07-figma",
+    "source": "figma-state-refresh-loading.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      130,
+      680,
+      235,
+      805
+    ],
+    "render_scale": 4.761904761904762,
+    "rects_source": [
+      [
+        168,
+        746,
+        207,
+        786
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        218,
+        716,
+        218,
+        746,
+        "vertical",
+        "30pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-07-actual",
+    "source": "actual-h5-loading.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      150,
+      745,
+      235,
+      852
+    ],
+    "render_scale": 5.882352941176471,
+    "rects_source": [
+      [
+        186,
+        807,
+        207,
+        828
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        220,
+        771,
+        220,
+        807,
+        "vertical",
+        "36pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-08-figma",
+    "source": "figma-state-bottom.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      115,
+      715,
+      270,
+      812
+    ],
+    "render_scale": 3.6129032258064515,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        255,
+        761,
+        255,
+        812,
+        "vertical",
+        "51pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-08-actual",
+    "source": "actual-h5-bottom.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      115,
+      785,
+      285,
+      852
+    ],
+    "render_scale": 3.2941176470588234,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        270,
+        829,
+        270,
+        852,
+        "vertical",
+        "23pt"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-dark.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      190,
+      375,
+      340
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        8,
+        208,
+        367,
+        332
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-dark-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      78,
+      393,
+      235
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        8,
+        87,
+        385,
+        228
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-dark.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      305,
+      375,
+      485
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        18,
+        421,
+        360,
+        465
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-dark-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      190,
+      393,
+      380
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        18,
+        305,
+        378,
+        352
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-dark.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      420,
+      375,
+      520
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        18,
+        466,
+        357,
+        470
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-dark-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      320,
+      393,
+      430
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        18,
+        363,
+        375,
+        368
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-card-dark.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      0,
+      105,
+      375,
+      690
+    ],
+    "render_scale": 1.6533333333333333,
+    "rects_source": [
+      [
+        12,
+        116,
+        363,
+        674
+      ],
+      [
+        60,
+        238,
+        314,
+        589
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-nano-dark-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      105,
+      393,
+      690
+    ],
+    "render_scale": 1.5776081424936388,
+    "rects_source": [
+      [
+        12,
+        126,
+        381,
+        677
+      ],
+      [
+        61,
+        207,
+        314,
+        575
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-card-dark.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      45,
+      510,
+      330,
+      650
+    ],
+    "render_scale": 2.175438596491228,
+    "rects_source": [
+      [
+        60,
+        565,
+        315,
+        610
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-nano-dark-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      45,
+      485,
+      335,
+      625
+    ],
+    "render_scale": 2.1379310344827585,
+    "rects_source": [
+      [
+        60,
+        525,
+        314,
+        580
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      285,
+      150,
+      455
+    ],
+    "render_scale": 4.133333333333334,
+    "rects_source": [
+      [
+        18,
+        326,
+        100,
+        408
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      165,
+      165,
+      350
+    ],
+    "render_scale": 3.757575757575758,
+    "rects_source": [
+      [
+        20,
+        213,
+        106,
+        299
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "",
+    "source": "actual-h5-loading.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      250,
+      145,
+      393,
+      335
+    ],
+    "render_scale": 4.335664335664336,
+    "rects_source": [
+      [
+        316,
+        177,
+        373,
+        262
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-16-figma",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      10,
+      305,
+      375,
+      455
+    ],
+    "render_scale": 1.917808219178082,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [
+      [
+        20,
+        320,
+        20,
+        448,
+        "20"
+      ],
+      [
+        114,
+        320,
+        114,
+        448,
+        "114"
+      ],
+      [
+        208,
+        320,
+        208,
+        448,
+        "208"
+      ],
+      [
+        302,
+        320,
+        302,
+        448,
+        "302"
+      ]
+    ],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-16-actual",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      10,
+      190,
+      393,
+      345
+    ],
+    "render_scale": 1.8276762402088773,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [
+      [
+        20,
+        205,
+        20,
+        340,
+        "20"
+      ],
+      [
+        119,
+        205,
+        119,
+        340,
+        "119"
+      ],
+      [
+        218,
+        205,
+        218,
+        340,
+        "218"
+      ],
+      [
+        317,
+        205,
+        317,
+        340,
+        "317"
+      ]
+    ],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-17-figma",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      275,
+      305,
+      375,
+      455
+    ],
+    "render_scale": 5.0,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        302,
+        316,
+        375,
+        316,
+        "horizontal",
+        "可见73"
+      ]
+    ],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "UI-17-actual",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      285,
+      190,
+      393,
+      345
+    ],
+    "render_scale": 4.62962962962963,
+    "rects_source": [],
+    "arrows_source": [],
+    "dimensions_source": [
+      [
+        317,
+        205,
+        371,
+        205,
+        "horizontal",
+        "可见54"
+      ]
+    ],
+    "guides_source": [
+      [
+        371,
+        195,
+        371,
+        342,
+        "裁切线371"
+      ]
+    ],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "overview-nano-figma",
+    "source": "figma-card-light.png",
+    "source_size": [
+      375,
+      963
+    ],
+    "logical_viewport": [
+      375,
+      963
+    ],
+    "crop_box": [
+      0,
+      0,
+      375,
+      963
+    ],
+    "render_scale": 1.3333333333333333,
+    "rects_source": [
+      [
+        40,
+        274,
+        290,
+        634
+      ],
+      [
+        300,
+        274,
+        350,
+        634
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "overview-nano-actual",
+    "source": "actual-nano-light-entry.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      0,
+      393,
+      852
+    ],
+    "render_scale": 1.272264631043257,
+    "rects_source": [
+      [
+        61,
+        240,
+        312,
+        600
+      ],
+      [
+        318,
+        240,
+        367,
+        600
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "overview-h5-figma",
+    "source": "figma-overlay-light.png",
+    "source_size": [
+      375,
+      812
+    ],
+    "logical_viewport": [
+      375,
+      812
+    ],
+    "crop_box": [
+      0,
+      0,
+      375,
+      812
+    ],
+    "render_scale": 1.3333333333333333,
+    "rects_source": [
+      [
+        0,
+        203,
+        374,
+        811
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [
+      [
+        20,
+        320,
+        20,
+        448,
+        ""
+      ],
+      [
+        114,
+        320,
+        114,
+        448,
+        ""
+      ],
+      [
+        208,
+        320,
+        208,
+        448,
+        ""
+      ],
+      [
+        302,
+        320,
+        302,
+        448,
+        ""
+      ]
+    ],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  },
+  {
+    "evidence_id": "overview-h5-actual",
+    "source": "actual-h5-light-top.png",
+    "source_size": [
+      393,
+      852
+    ],
+    "logical_viewport": [
+      393,
+      852
+    ],
+    "crop_box": [
+      0,
+      0,
+      393,
+      852
+    ],
+    "render_scale": 1.272264631043257,
+    "rects_source": [
+      [
+        0,
+        86,
+        392,
+        851
+      ]
+    ],
+    "arrows_source": [],
+    "dimensions_source": [],
+    "guides_source": [
+      [
+        20,
+        205,
+        20,
+        340,
+        ""
+      ],
+      [
+        119,
+        205,
+        119,
+        340,
+        ""
+      ],
+      [
+        218,
+        205,
+        218,
+        340,
+        ""
+      ],
+      [
+        317,
+        205,
+        317,
+        340,
+        ""
+      ]
+    ],
+    "endpoint_tolerance": "≤1 source px/logical unit"
+  }
+]

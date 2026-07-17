@@ -1,0 +1,136 @@
+{
+  "device": {
+    "model": "iPhone 15",
+    "logical_viewport": "393×852pt",
+    "screenshot": "1179×2556px",
+    "scale": "3px/pt"
+  },
+  "empty_initial_design": {
+    "container_h": 549,
+    "top_blank": 239,
+    "icon_visible": "41×41",
+    "icon_copy_gap": 23,
+    "copy_visible": "40×13",
+    "bottom_blank": 233,
+    "residual": 0,
+    "stack_center_delta": 3
+  },
+  "refresh_loading": {
+    "design_spinner": "39×40",
+    "actual_spinner": "21×21",
+    "delta": "-18×-19",
+    "design_content_to_spinner": 30,
+    "actual_content_to_spinner": 36
+  },
+  "end_state": {
+    "design_text": "47×11",
+    "actual_text": "53×14",
+    "design_bottom_gap": 51,
+    "actual_bottom_gap": 23,
+    "bottom_gap_delta": -28
+  },
+  "h5_columns": {
+    "design_left_edges": [
+      20,
+      114,
+      208,
+      302
+    ],
+    "actual_left_edges": [
+      20,
+      119,
+      218,
+      317
+    ],
+    "design_pitch": 94,
+    "actual_pitch": 99,
+    "cumulative_drift": [
+      0,
+      5,
+      10,
+      15
+    ]
+  },
+  "h5_right_clip": {
+    "design_tile": 82,
+    "design_visible": 73,
+    "design_hidden": 9,
+    "actual_tile": 86,
+    "actual_visible": 54,
+    "actual_hidden": 32
+  },
+  "icons": {
+    "sheet_chevron_design_frame": "24×24",
+    "sheet_chevron_design_ink": "18×9",
+    "sheet_chevron_actual_frame": "Needs verification",
+    "sheet_chevron_actual_ink": "11×6"
+  },
+  "dark_colors": [
+    {
+      "element": "H5 面板底色",
+      "expected": "#222222",
+      "actual": "#232323",
+      "delta_rgb": [
+        1,
+        1,
+        1
+      ],
+      "delta_e76": 0.49
+    },
+    {
+      "element": "H5 价格",
+      "expected": "#FF764D",
+      "actual": "#EE7F59",
+      "delta_rgb": [
+        -17,
+        9,
+        12
+      ],
+      "delta_e76": 12.6
+    },
+    {
+      "element": "H5 分割线",
+      "expected": "#3D3D3D",
+      "actual": "#393939",
+      "delta_rgb": [
+        -4,
+        -4,
+        -4
+      ],
+      "delta_e76": 1.79
+    },
+    {
+      "element": "Nano 消息卡底色",
+      "expected": "#202020",
+      "actual": "#212121",
+      "delta_rgb": [
+        1,
+        1,
+        1
+      ],
+      "delta_e76": 0.49
+    },
+    {
+      "element": "Nano 店卡底色",
+      "expected": "#2D2D2D",
+      "actual": "#2E2E2E",
+      "delta_rgb": [
+        1,
+        1,
+        1
+      ],
+      "delta_e76": 0.47
+    },
+    {
+      "element": "Nano CTA 底色",
+      "expected": "#323C5F",
+      "actual": "#353D5E",
+      "delta_rgb": [
+        3,
+        1,
+        -1
+      ],
+      "delta_e76": 1.51
+    }
+  ]
+}

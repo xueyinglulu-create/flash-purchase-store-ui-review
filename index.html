@@ -1,0 +1,260 @@
+<!doctype html>
+<html lang="zh-CN">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>闪购 Chat · 店铺卡片与更多店铺浮层 UI Review（坐标校正版）</title>
+  <style>
+    :root{--bg:#f4f6fa;--card:#fff;--ink:#162033;--muted:#617087;--line:#dfe5ee;--blue:#315efb;--red:#dc2626;--orange:#d97706;--green:#15803d;--violet:#6d28d9;--shadow:0 12px 34px rgba(15,23,42,.08)}
+    *{box-sizing:border-box} html{scroll-behavior:smooth} body{margin:0;background:var(--bg);color:var(--ink);font:14px/1.65 -apple-system,BlinkMacSystemFont,"PingFang SC","Microsoft YaHei",sans-serif}
+    a{color:var(--blue)} button,select,input,textarea{font:inherit} .wrap{max-width:1240px;margin:auto;padding:0 22px 72px}
+    .toolbar{position:sticky;top:0;z-index:30;margin:0 -22px 24px;padding:12px 22px;background:rgba(255,255,255,.93);backdrop-filter:blur(18px);border-bottom:1px solid var(--line);display:flex;gap:10px;align-items:center;overflow:auto;box-shadow:0 6px 20px rgba(15,23,42,.05)}
+    .toolbar strong{white-space:nowrap;margin-right:auto}.toolbar button{white-space:nowrap;border:1px solid #cfd7e4;background:#fff;border-radius:9px;padding:8px 12px;cursor:pointer}.sync{white-space:nowrap;color:var(--orange);font-size:12px}
+    header{background:linear-gradient(145deg,#0f172a,#25345a 66%,#315efb);color:white;border-radius:24px;padding:34px;margin:20px 0 24px;box-shadow:var(--shadow)}
+    header h1{font-size:34px;line-height:1.22;margin:0 0 12px} header p{max-width:900px;color:#dbe5ff;margin:5px 0}.tag{display:inline-flex;padding:4px 9px;border-radius:99px;background:rgba(255,255,255,.12);margin:12px 6px 0 0}
+    .grid{display:grid;grid-template-columns:repeat(12,1fr);gap:18px}.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:20px;box-shadow:var(--shadow)}.span-12{grid-column:span 12}.span-8{grid-column:span 8}.span-6{grid-column:span 6}.span-4{grid-column:span 4}
+    h2{font-size:24px;margin:0 0 14px}h3{font-size:17px;margin:0 0 8px}.kpi{font-size:32px;font-weight:750}.sub{color:var(--muted)}.callout{border-left:4px solid var(--blue);background:#eef3ff;padding:13px 15px;border-radius:8px;margin:12px 0}.warn{border-left-color:var(--orange);background:#fff7e8}.danger{border-left-color:var(--red);background:#fff1f2}
+    figure{margin:14px 0}figure img{display:block;width:100%;max-height:820px;object-fit:contain;background:#eef2f7;border:1px solid var(--line);border-radius:12px;cursor:zoom-in}figcaption{color:var(--muted);margin-top:7px;font-size:12px}
+    table{border-collapse:separate;border-spacing:0;width:100%;font-size:13px;overflow:hidden}th,td{padding:10px 11px;border-right:1px solid var(--line);border-bottom:1px solid var(--line);vertical-align:top}th{background:#f0f4f9;text-align:left;position:sticky;top:58px;z-index:2}tr>*:first-child{border-left:1px solid var(--line)}thead tr:first-child>*{border-top:1px solid var(--line)}thead tr:first-child>*:first-child{border-top-left-radius:10px}thead tr:first-child>*:last-child{border-top-right-radius:10px}.table-scroll{overflow:auto;max-height:650px}
+    .status{font-weight:700}.issue{color:var(--red)}.pass{color:var(--green)}.verify{color:var(--orange)}.adapt{color:var(--violet)}
+    .issues{display:grid;gap:12px}.issue-card{border:1px solid var(--line);border-left:5px solid var(--orange);border-radius:13px;background:#fff;overflow:hidden}.issue-card[data-priority="P0"]{border-left-color:var(--red)}.issue-card[data-priority="P2"]{border-left-color:#64748b}.issue-head{display:grid;grid-template-columns:auto auto 1fr auto;gap:10px;align-items:center;padding:14px 16px;background:#f8fafc}.badge{font-weight:800;padding:2px 8px;border-radius:99px;background:#e8edf6}.issue-body{padding:0 16px 16px;display:grid;grid-template-columns:1fr 1fr;gap:12px}.issue-evidence{grid-column:1/-1;margin:14px 0 2px}.issue-evidence img{max-height:680px;background:#f3f6fa}.issue-evidence figcaption{font-size:13px;color:#52627a}.issue-body p{margin:11px 0}.issue-body textarea{width:100%;min-height:78px;border:1px solid var(--line);border-radius:8px;padding:9px;resize:vertical}.issue-card.ignored .issue-body{display:none}.issue-card select{border:1px solid #cfd7e4;border-radius:8px;padding:6px;background:#fff}
+    .legend{display:flex;gap:12px;flex-wrap:wrap}.dot{width:9px;height:9px;border-radius:50%;display:inline-block;margin-right:5px}.foot{color:var(--muted);font-size:12px;margin-top:22px}.nowrap{white-space:nowrap}.mono{font-family:ui-monospace,SFMono-Regular,Menlo,monospace}.lightbox{position:fixed;inset:0;z-index:100;background:rgba(3,7,18,.92);display:none;align-items:center;justify-content:center;padding:24px}.lightbox.open{display:flex}.lightbox img{max-width:96vw;max-height:92vh;object-fit:contain}.lightbox button{position:absolute;right:22px;top:18px;border:0;background:#fff;color:#111;border-radius:50%;width:40px;height:40px;font-size:24px;cursor:pointer}
+    @media(max-width:800px){.span-8,.span-6,.span-4{grid-column:span 12}header{padding:24px}header h1{font-size:27px}.issue-body{grid-template-columns:1fr}.issue-head{grid-template-columns:auto auto 1fr}.issue-head select{grid-column:1/-1}.wrap{padding-left:14px;padding-right:14px}.toolbar{margin-left:-14px;margin-right:-14px;padding-left:14px;padding-right:14px}}
+    @media print{.toolbar{display:none}.wrap{max-width:none}.card{break-inside:avoid;box-shadow:none}.issue-card{break-inside:avoid}th{position:static}}
+  </style>
+</head>
+<body>
+<div class="wrap">
+  <div class="toolbar">
+    <strong>闪购 Chat · UI Review</strong>
+    <span class="sync" id="syncState">本地草稿 · 未同步</span>
+    <button onclick="saveDraft()">保存本地草稿</button>
+    <button onclick="exportJson()">导出 JSON</button>
+    <button onclick="window.print()">打印 / PDF</button>
+    <button onclick="resetDraft()">重置状态</button>
+  </div>
+
+  <header>
+    <h1>店铺卡片、更多入口、更多店铺浮层<br>UI Review · 坐标校正版</h1>
+    <p>本版重新从 Figma 与 8 张 iPhone 15 截图量取原图坐标，撤销旧报告中口径错误的间距结论；所有间距线均由源图边缘坐标生成并回算校验。Nano 与 H5 分开审计，浮层新增逐列对齐、累计漂移和右侧裁切量检查。</p>
+    <span class="tag">设备：iPhone 15</span><span class="tag">截图：1179×2556px</span><span class="tag">逻辑视口：393×852pt</span><span class="tag">比例：3px/pt</span><span class="tag">Nano 卡片</span><span class="tag">H5 浮层</span>
+  </header>
+
+  <section class="grid">
+    <article class="card span-4"><div class="sub">确认问题</div><div class="kpi">17</div><div>P0 2 · P1 12 · P2 3</div></article>
+    <article class="card span-4"><div class="sub">本轮补齐的阻断检查</div><div class="kpi">4</div><div>标注端点回算 · 逐列对齐 · 裁切量 · 重复文本堆叠</div></article>
+    <article class="card span-4"><div class="sub">尚未有实现证据</div><div class="kpi">3</div><div>初始空态 · 深色加载/到底 · 运行时代码 token</div></article>
+
+    <article class="card span-12">
+      <h2>结论先行</h2>
+      <div class="callout danger"><b>不能验收。</b> H5 在加载与到底态输出 <span class="mono">¥NaN</span>，且存在黑图；这两项属于数据/渲染故障。布局侧，Nano 三行“销量→价格”均多出约 10pt；H5 商品列从第 2 列起累计右移约 5/10/15pt，最右列隐藏量由设计约 9pt 增至约 32pt。</div>
+      <div class="callout"><b>深色 token 不是主观观感问题。</b> H5 面板底色实采 <span class="mono">#232323</span>，Figma 为 <span class="mono">#222222</span>；H5 价格实采约 <span class="mono">#EE7F59</span>，Figma 为 <span class="mono">#FF764D</span>，ΔE76 约 12.6。</div>
+      <div class="callout warn"><b>初始空态仍不能判实现通过。</b> Figma 初始空态已完整测量，但当前 8 张实现截图没有对应的“空列表 + 加载文案”画面；报告明确记为未检查，不再用刷新中或默认列表代替。</div>
+    </article>
+
+    <article class="card span-6"><h2>Nano 总览</h2><figure><img src="assets/overview-nano.png" alt="Nano Figma 与实现总览"><figcaption>Figma 为 375×963 设计导出；实现为 iPhone 15 截图归一化到 393×852pt。</figcaption></figure></article>
+    <article class="card span-6"><h2>H5 总览</h2><figure><img src="assets/overview-h5.png" alt="H5 Figma 与实现总览"><figcaption>浮层的高度、标题、店铺内容和滚动状态均存在差异，以下按轴拆解。</figcaption></figure></article>
+  </section>
+
+  <section class="card" style="margin-top:18px">
+    <h2>问题清单</h2>
+    <div class="legend"><span><i class="dot" style="background:#dc2626"></i>P0</span><span><i class="dot" style="background:#d97706"></i>P1</span><span><i class="dot" style="background:#64748b"></i>P2</span><span class="sub">状态与备注可编辑；忽略后正文折叠但可恢复。</span></div>
+    <div id="issueList" class="issues" style="margin-top:14px"></div>
+  </section>
+
+  <section class="grid" style="margin-top:18px">
+    <article class="card span-12">
+      <h2>空态、加载态、到底态：独立纵向账本</h2>
+      <figure><img src="assets/evidence-state-loading.png" alt="初始空态、刷新加载与实现加载对比"><figcaption>初始空态不是“没有内容所以无需检查”；它包含容器、上下留白、图标、文案和图文间距。实现截图仅覆盖刷新/列表加载。</figcaption></figure>
+      <div class="table-scroll"><table>
+        <thead><tr><th>状态 / 关系</th><th>Figma</th><th>实现</th><th>差值</th><th>结果</th><th>证据口径</th></tr></thead>
+        <tbody>
+          <tr><td>初始空态容器总高</td><td>549pt</td><td>未提供对应实现</td><td>—</td><td class="status verify">未检查</td><td>面板内容区 y263→812</td></tr>
+          <tr><td>初始空态：顶部留白</td><td>239pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>内容区顶→图标墨迹顶</td></tr>
+          <tr><td>初始空态：图标墨迹</td><td>41×41pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>浅灰 spinner 联合 bbox</td></tr>
+          <tr><td>初始空态：图标→“加载中”</td><td>23pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>墨迹底→文字墨迹顶</td></tr>
+          <tr><td>初始空态：文字墨迹</td><td>40×13pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>“加载中”联合 bbox</td></tr>
+          <tr><td>初始空态：文字底→容器底</td><td>233pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>总和 239+41+23+13+233=549，残差 0</td></tr>
+          <tr><td>初始空态：整组中心线</td><td>比内容区中心下 3pt</td><td>未提供</td><td>—</td><td class="status verify">未检查</td><td>图标+文案可见组中心</td></tr>
+          <tr><td>刷新加载：spinner 墨迹</td><td>约 39×40pt</td><td>约 21×21pt</td><td>-18×-19pt</td><td class="status issue">Issue · UI-07</td><td>同为 spinner 可见墨迹 bbox</td></tr>
+          <tr><td>刷新加载：末内容→spinner</td><td>约 30pt</td><td>约 36pt</td><td>+6pt</td><td class="status issue">Issue · UI-07</td><td>末行可见内容/分割线→图标顶</td></tr>
+          <tr><td>到底态：末内容→文案</td><td>约 36pt</td><td>约 43pt</td><td>+7pt</td><td class="status issue">Issue · UI-08</td><td>末价格墨迹/分割线→文案顶</td></tr>
+          <tr><td>到底态：文案底→面板底</td><td>51pt</td><td>23pt</td><td>-28pt</td><td class="status issue">Issue · UI-08</td><td>同一面板底边口径</td></tr>
+        </tbody>
+      </table></div>
+      <figure><img src="assets/evidence-state-end-spacing.png" alt="到底态底部留白对比"><figcaption>实际“到底了～”更靠近面板底部；该差异不能被“文案存在”覆盖。</figcaption></figure>
+    </article>
+
+    <article class="card span-6">
+      <h2>图标尺寸账本</h2>
+      <figure><img src="assets/evidence-icon-chevron.png" alt="H5 下拉图标尺寸对比"><figcaption>frame 与可见墨迹分开记账；实现 frame 在截图中不可见，因此单独标记需代码复核。</figcaption></figure>
+      <div class="table-scroll"><table>
+        <thead><tr><th>图标实例</th><th>设计 frame</th><th>设计墨迹</th><th>实现 frame</th><th>实现墨迹</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>H5 面板下拉 icon/down</td><td>24×24</td><td>18×9</td><td>需代码复核</td><td>约 11×6</td><td class="status issue">Issue · UI-06</td></tr>
+          <tr><td>H5 刷新 spinner</td><td>40×40</td><td>约 39×40</td><td>需代码复核</td><td>约 21×21</td><td class="status issue">Issue · UI-07</td></tr>
+          <tr><td>H5 初始空态 spinner</td><td>40×40</td><td>41×41</td><td>未提供</td><td>未提供</td><td class="status verify">未检查</td></tr>
+          <tr><td>Nano 更多入口圆形底</td><td>16×16</td><td>16×16</td><td>截图估计 16×16</td><td>约 16×16</td><td class="status pass">Pass</td></tr>
+          <tr><td>Nano icon/rightMini</td><td>14×14</td><td>约 4×7</td><td>需代码复核</td><td>约 4×7</td><td class="status verify">墨迹 Pass / frame 需复核</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-6">
+      <h2>深色模式 color-token 账本</h2>
+      <figure><img src="assets/evidence-dark-token-swatches.png" alt="深色 token 采样对比"><figcaption>纯色面使用内部 5 点 + 区域众数；文字/图标使用核心像素，均避开抗锯齿、阴影和图片内容。</figcaption></figure>
+      <div class="table-scroll"><table>
+        <thead><tr><th>元素</th><th>Figma token / 值</th><th>实现采样</th><th>ΔRGB / ΔE76</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>H5 面板底色</td><td>panel_bg_white · #222222</td><td>中位/众数 #232323，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status issue">Issue · UI-09</td></tr>
+          <tr><td>H5 主文字</td><td>default_black100 · #FFFFFF</td><td>#FFFFFF，核心像素 n≥50</td><td>(0,0,0) / 0</td><td class="status pass">Pass</td></tr>
+          <tr><td>H5 次文字</td><td>default_grey50 · #666666</td><td>#666666，核心像素 n≥50</td><td>(0,0,0) / 0</td><td class="status pass">Pass</td></tr>
+          <tr><td>H5 价格</td><td>orange100 · #FF764D</td><td>#ED7E58–#EE7F59，核心像素 n≥100</td><td>(-17,+9,+12) / 12.60</td><td class="status issue">Issue · UI-10</td></tr>
+          <tr><td>H5 分割线</td><td>渲染 #3D3D3D</td><td>#393939，n=5+线段</td><td>(-4,-4,-4) / 1.79</td><td class="status issue">Issue · UI-11</td></tr>
+          <tr><td>H5 下拉图标 tint</td><td>#FFFFFF</td><td>#FFFFFF，核心像素 n=20</td><td>(0,0,0) / 0</td><td class="status pass">颜色 Pass；尺寸 Issue</td></tr>
+          <tr><td>Nano 消息卡底色</td><td>#202020</td><td>#212121，n=5+区域</td><td>(+1,+1,+1) / 0.49</td><td class="status issue">Issue · UI-12</td></tr>
+          <tr><td>Nano 店卡底色</td><td>chat_card_bg · #2D2D2D</td><td>#2E2E2E，n=5+区域</td><td>(+1,+1,+1) / 0.47</td><td class="status issue">Issue · UI-12</td></tr>
+          <tr><td>Nano CTA 底色</td><td>rgba(66,110,255,.24) 合成约 #323C5F</td><td>#353D5E，n=5+区域</td><td>(+3,+1,-1) / 1.51</td><td class="status issue">Issue · UI-13</td></tr>
+          <tr><td>深色加载 / 到底 token</td><td>需对应 Figma 状态</td><td>无实现深色截图</td><td>—</td><td class="status verify">未检查</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-12">
+      <h2>Nano 纵向间距与堆叠核对</h2>
+      <figure><img src="assets/evidence-nano-vertical-spacing.png" alt="Nano 卡片纵向间距标注"><figcaption>端帽贴在可见墨迹的真实上下边缘：三行销量→价格均由 2pt 增至约 12pt；第 3 个价格→推荐语由 14pt 增至约 24pt。</figcaption></figure>
+      <div class="table-scroll"><table>
+        <thead><tr><th>纵向相邻对</th><th>Figma</th><th>实现（截图估计）</th><th>差值</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>卡片顶→店铺标题组</td><td>14pt</td><td>约 14pt</td><td>0</td><td class="status pass">Pass</td></tr>
+          <tr><td>店名→评分/起送/时长</td><td>6pt</td><td>约 6pt</td><td>0</td><td class="status pass">Pass</td></tr>
+          <tr><td>店铺信息→商品区</td><td>8pt</td><td>约 9–10pt</td><td>+1–2</td><td class="status verify">需代码复核</td></tr>
+          <tr><td>商品行 1→2</td><td>8pt</td><td>约 8pt</td><td>0</td><td class="status pass">Pass</td></tr>
+          <tr><td>商品行 2→3</td><td>8pt</td><td>约 8pt</td><td>0</td><td class="status pass">Pass</td></tr>
+          <tr><td>每行标题墨迹→销量墨迹（3/3）</td><td>约 6pt</td><td>约 5–6pt</td><td>0～-1pt</td><td class="status pass">Pass</td></tr>
+          <tr><td>每行销量墨迹→价格墨迹（3/3）</td><td>2pt</td><td>约 12pt</td><td>+10pt</td><td class="status issue">Issue · UI-02</td></tr>
+          <tr><td>第 3 个价格墨迹→推荐语墨迹</td><td>14pt</td><td>约 24pt</td><td>+10pt</td><td class="status issue">Issue · UI-02</td></tr>
+          <tr><td>推荐语墨迹→CTA 背景顶</td><td>14pt</td><td>约 14pt</td><td>0</td><td class="status pass">Pass</td></tr>
+          <tr><td>CTA 背景底→卡片底</td><td>约 13pt</td><td>约 14pt</td><td>+1pt</td><td class="status pass">Pass；撤销旧结论</td></tr>
+          <tr><td>卡片→更多入口</td><td>10pt</td><td>约 6pt</td><td>-4pt</td><td class="status issue">Issue · UI-03</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-12">
+      <h2>H5 几何、尺寸与水平/纵向间距</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>元素 / 关系</th><th>Figma</th><th>实现（393×852pt）</th><th>结果</th><th>说明</th></tr></thead>
+        <tbody>
+          <tr><td>浮层顶 / 高</td><td>y203 / h609（375×812）</td><td>y86 / h766</td><td class="status issue">Issue · UI-04</td><td>按实际设备高度等比后仍约提前 127pt</td></tr>
+          <tr><td>标题栏高 / 上下 padding</td><td>60 / 17pt</td><td>约 60 / 17pt</td><td class="status pass">Pass</td><td>组件内部高度一致</td></tr>
+          <tr><td>标题文案</td><td>逛逛发现更多</td><td>更多店铺</td><td class="status issue">Issue · UI-05</td><td>文案不一致</td></tr>
+          <tr><td>标题栏左右 padding</td><td>20pt</td><td>约 20pt</td><td class="status pass">Pass</td><td>同边缘口径</td></tr>
+          <tr><td>标题栏→首店铺</td><td>内容 py 6pt，首 logo 约 8pt</td><td>首 logo 约 11pt</td><td class="status verify">约 +3pt</td><td>截图估计，建议 DOM 复核</td></tr>
+          <tr><td>店铺 logo</td><td>42×42pt</td><td>约 42×42pt</td><td class="status pass">Pass</td><td>外框尺寸</td></tr>
+          <tr><td>logo→标题列</td><td>8pt</td><td>约 8pt</td><td class="status pass">Pass</td><td>水平相邻对</td></tr>
+          <tr><td>店铺头→商品区</td><td>10pt 组件 gap</td><td>约 12–14pt</td><td class="status verify">漂移</td><td>动态标题/meta 高度需 DOM 复核</td></tr>
+          <tr><td>商品图片</td><td>82×82pt</td><td>约 86×86pt</td><td class="status issue">Issue · UI-14</td><td>宽高均 +4pt</td></tr>
+          <tr><td>商品列局部间距</td><td>12pt</td><td>约 13pt</td><td class="status pass">1pt 漂移</td><td>图片框边缘口径</td></tr>
+          <tr><td>商品列 pitch / 左边缘</td><td>94pt；20/114/208/302</td><td>99pt；20/119/218/317</td><td class="status issue">Issue · UI-16</td><td>第 2/3/4 列累计右移 +5/+10/+15pt</td></tr>
+          <tr><td>图片→标题</td><td>6pt</td><td>约 6pt</td><td class="status pass">Pass</td><td>纵向相邻对</td></tr>
+          <tr><td>标题→价格 frame</td><td>0pt</td><td>约 2–4pt</td><td class="status verify">需 DOM 复核</td><td>截图仅能稳定量墨迹间距</td></tr>
+          <tr><td>内容右侧裁切</td><td>第 4 列图片可见约 73pt / 隐藏约 9pt</td><td>可见约 54pt / 隐藏约 32pt；clip x≈371</td><td class="status issue">Issue · UI-17</td><td>露出模式存在，但裁切量并不等价</td></tr>
+          <tr><td>滚动条</td><td>设计状态未显示系统条</td><td>部分 Nano 画面显示</td><td class="status verify">未归 H5 缺陷</td><td>容器/录屏状态需运行时确认</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-12">
+      <h2>覆盖矩阵</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>实现面</th><th>主题</th><th>状态 / 滚动位置</th><th>Figma</th><th>实现证据</th><th>结果</th></tr></thead>
+        <tbody>
+          <tr><td>Nano</td><td>浅色</td><td>首卡默认</td><td>8280:17456</td><td>IMG_3044</td><td class="status issue">已走查</td></tr>
+          <tr><td>Nano</td><td>浅色</td><td>更多入口居中</td><td>8280:17456</td><td>IMG_3045</td><td class="status issue">已走查</td></tr>
+          <tr><td>Nano</td><td>深色</td><td>首卡默认</td><td>10079:31778</td><td>IMG_3047</td><td class="status issue">已走查</td></tr>
+          <tr><td>Nano</td><td>深色</td><td>更多入口居中</td><td>10079:31778</td><td>IMG_3046</td><td class="status issue">已走查</td></tr>
+          <tr><td>H5</td><td>浅色</td><td>浮层顶部</td><td>10079:31709</td><td>IMG_3049</td><td class="status issue">已走查</td></tr>
+          <tr><td>H5</td><td>深色</td><td>浮层顶部</td><td>10079:31779</td><td>IMG_3048</td><td class="status issue">已走查</td></tr>
+          <tr><td>H5</td><td>浅色</td><td>刷新 / 列表加载</td><td>状态导出：刷新中</td><td>IMG_3050</td><td class="status issue">已走查</td></tr>
+          <tr><td>H5</td><td>浅色</td><td>到底</td><td>状态导出：到底</td><td>IMG_3051</td><td class="status issue">已走查</td></tr>
+          <tr><td>H5</td><td>浅色</td><td>初始空态</td><td>状态导出：初始加载</td><td>无</td><td class="status verify">未检查：缺实现截图</td></tr>
+          <tr><td>H5</td><td>深色</td><td>加载 / 到底</td><td>需深色状态基线</td><td>无</td><td class="status verify">未检查</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-12">
+      <h2>元素审计矩阵（摘要）</h2>
+      <div class="table-scroll"><table>
+        <thead><tr><th>元素</th><th>间距</th><th>对齐</th><th>字体</th><th>颜色</th><th>尺寸</th><th>边框/圆角</th><th>结论</th></tr></thead>
+        <tbody>
+          <tr><td>Nano 店铺头</td><td>Pass</td><td>Pass</td><td>需代码复核 family</td><td>深色表面 Issue</td><td>logo 16 Pass</td><td>logo stroke 需复核</td><td class="status verify">部分需复核</td></tr>
+          <tr><td>Nano 商品行 ×3</td><td>内部纵向 Issue</td><td>列对齐 Pass</td><td>数字 family 需代码复核</td><td>价格浅/深基本一致</td><td>56×56 Pass</td><td>图片 chrome 需边缘证据</td><td class="status issue">UI-02</td></tr>
+          <tr><td>Nano 推荐语</td><td>上间距 Issue</td><td>左对齐 Pass</td><td>字号/行高接近</td><td>主文字 Pass</td><td>2 行适配</td><td>N/A</td><td class="status issue">UI-02</td></tr>
+          <tr><td>Nano CTA</td><td>上下留白 Issue</td><td>居中 Pass</td><td>14/500 接近</td><td>深色底色 Issue</td><td>h40 Pass</td><td>r10 Pass</td><td class="status issue">UI-13</td></tr>
+          <tr><td>Nano 更多入口</td><td>卡片间 gap Issue</td><td>居中 Pass</td><td>12/600 接近</td><td>深色灰需 token</td><td>icon 墨迹 Pass</td><td>圆形底 16 Pass</td><td class="status issue">UI-03</td></tr>
+          <tr><td>H5 标题栏</td><td>padding Pass</td><td>居中 Pass</td><td>16/600 接近</td><td>深色文字 Pass</td><td>h60 Pass</td><td>顶圆角约 20</td><td class="status issue">文案/图标</td></tr>
+          <tr><td>H5 下拉图标</td><td>右 inset Pass</td><td>中心接近</td><td>N/A</td><td>tint Pass</td><td>墨迹 Issue</td><td>N/A</td><td class="status issue">UI-06</td></tr>
+          <tr><td>H5 店铺头</td><td>top 漂移</td><td>左列 Pass</td><td>需 DOM 复核</td><td>次文字 Pass</td><td>logo 42 Pass</td><td>r8 / stroke 需复核</td><td class="status verify">部分需复核</td></tr>
+          <tr><td>H5 商品卡 ×12+</td><td>局部 gap 漂移</td><td>累计列漂移 +5/+10/+15pt</td><td>数字 family 需 DOM</td><td>价格 Issue</td><td>图片 86 vs 82；末列过度裁切</td><td>边框需像素剖面</td><td class="status issue">UI-10/UI-14/UI-16/UI-17</td></tr>
+          <tr><td>H5 refresh spinner</td><td>上下空白 Issue</td><td>水平居中 Pass</td><td>N/A</td><td>浅色低对比接近</td><td>21×21 vs 39×40</td><td>N/A</td><td class="status issue">UI-07</td></tr>
+          <tr><td>H5 到底文案</td><td>底部留白 Issue</td><td>水平居中 Pass</td><td>实际约更大</td><td>浅灰接近</td><td>53×14 vs 47×12</td><td>N/A</td><td class="status issue">UI-08</td></tr>
+        </tbody>
+      </table></div>
+    </article>
+
+    <article class="card span-12">
+      <h2>交付前完整性检查</h2>
+      <p><b class="verify">Needs supplementation</b>。本次已补齐并实际执行：源图坐标清单、间距端点回算、100%/400% 视觉复核、浮层逐列对齐/裁切、空态/刷新/到底纵向堆叠、图标与深色 token；旧报告的错误间距结论已撤销。</p>
+      <ul>
+        <li><b>已完成：</b>8 张实现截图、浅/深默认态、Nano 更多入口、H5 加载和到底；横纵间距、尺寸、图标、深色颜色均独立建账。</li>
+        <li><b>逐条问题证据门槛：</b>17 条问题记录 = 17 个卡内标注证据图，缺失 0；每张图的标题、alt 与 caption 均对应稳定 Issue ID，且支持点击放大。</li>
+        <li><b>标注坐标门槛：</b>34 条标注记录已写入 transform manifest；所有测量线包含源图坐标、裁切框、缩放倍率和端帽，脚本回算结果 34/34 通过，端点误差不超过 1 个源像素/逻辑单位。</li>
+        <li><b>仍未检查：</b>实现的初始空态；深色加载/到底；H5 DOM/CSS 与 Nano 样式代码中的实际 token、不可见 icon frame、字体 family；交互过渡与滚动恢复。</li>
+        <li><b>报告状态：</b>公开 HTTPS 页面用于查看；状态/备注、忽略折叠和 JSON 导出仍仅使用当前浏览器的 localStorage，不具备跨设备共享同步，因此编辑同步能力仍记为未完成。</li>
+        <li><b>证据干扰：</b>绿色触点、紫色录屏区域、vConsole 固定按钮均按测试干扰忽略；未作为产品 UI 缺陷。</li>
+      </ul>
+    </article>
+  </section>
+  <p class="foot">生成时间：2026-07-17 · Figma：闪购 chat / node 10079:32883 · 测量值均标注 exact / screenshot-estimated / Not checked。图片可点击放大。</p>
+</div>
+
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="图片预览"><button aria-label="关闭">×</button><img alt="放大预览"></div>
+
+<script>
+const issues = [
+ {id:'UI-01',p:'P0',surface:'H5',title:'加载与到底态价格输出 ¥NaN',img:'assets/issue-ui-01.png',caption:'红框逐行标出异常现价；截图直接证明 NaN 已进入展示层。',evidence:'IMG_3050、IMG_3051 的多件商品现价均显示 ¥NaN，旧价仍存在。',expect:'输出有效价格；无价格时使用明确占位/隐藏策略，不允许 NaN 进入 UI。',fix:'在格式化前校验 number/finite；统一币种组件的空值与异常兜底。'},
+ {id:'UI-02',p:'P1',surface:'Nano',title:'三行“销量→价格”和第 3 行→推荐语间距均被拉开',img:'assets/issue-ui-02.png',caption:'端帽贴在可见墨迹边缘：设计 2/2/2/14pt，实现约 12/12/12/24pt。',evidence:'三行销量墨迹→价格墨迹均由 2pt 变为约 12pt（+10pt）；第 3 个价格→推荐语由 14pt 变为约 24pt（+10pt）。旧报告中的 CTA→卡底 +6pt 为错误口径，已撤销。',expect:'三行使用一致的文本堆叠；销量→价格保持约 2pt，第 3 行价格→推荐语保持约 14pt。',fix:'检查 Nano 商品文本列的固定行高、margin 与 flex 分配；避免每行在价格前额外加入约 10pt。'},
+ {id:'UI-03',p:'P1',surface:'Nano',title:'店铺卡片到“更多入口”的水平间距不足',img:'assets/issue-ui-03.png',caption:'设计与实现均以卡片右边缘→入口左边缘的端帽线测量：10pt 对 6pt。',evidence:'设计 gap 10pt；实现截图估计约 6pt，少 4pt。',expect:'卡片与更多入口保持 10pt。',fix:'统一 carousel item gap token 为 10pt，移除入口自身负 margin/容器补偿。'},
+ {id:'UI-04',p:'P1',surface:'H5',title:'更多店铺浮层高度过大，起点明显提前',img:'assets/issue-ui-04.png',caption:'左右分别标出 Figma 与实现的真实浮层边界，未复用镜像坐标。',evidence:'Figma 375×812 中 y203/h609；实现 393×852 中 y86/h766。按设备高度等比后仍约提前 127pt。',expect:'按设计的 bottom sheet 高度/最大高度与滚动区约束展示。',fix:'校正 sheet max-height、header 固定区和 scrollport 高度，不要让内容高度直接撑满视口。'},
+ {id:'UI-05',p:'P1',surface:'H5',title:'浮层标题文案与设计不一致',img:'assets/issue-ui-05.png',caption:'并排框选设计标题“逛逛发现更多”和实现标题“更多店铺”。',evidence:'Figma“逛逛发现更多”，实现“更多店铺”。',expect:'使用设计/产品确认后的唯一文案。',fix:'替换 H5 标题并同步埋点/无障碍 label。'},
+ {id:'UI-06',p:'P1',surface:'H5',title:'面板下拉图标可见尺寸偏小',img:'assets/issue-ui-06.png',caption:'以同一可见墨迹 bbox 口径对比设计 18×9pt 与实现约 11×6pt。',evidence:'Figma icon/down frame 24×24pt、墨迹约 18×9pt；实现墨迹约 11×6pt，宽少 7pt、高少 3pt。',expect:'24×24 frame 内渲染设计 icon/down，保持 18×9 左右的可见墨迹。',fix:'不要把 24px 组件再次缩放；检查 SVG viewBox、width/height 与 transform。'},
+ {id:'UI-07',p:'P1',surface:'H5',title:'刷新加载 spinner 尺寸过小且上方留白偏大',img:'assets/issue-ui-07.png',caption:'端帽分别贴在内容底/分割线和 spinner 顶；可见墨迹框按同一口径测量。',evidence:'设计 spinner 墨迹约 39×40pt，实现约 21×21pt；内容底→spinner 设计约 30pt，实现约 36pt。',expect:'spinner 使用 40×40 frame，按设计的内容后间距放置。',fix:'修正 loading 组件尺寸 token；将 sentinel padding 与图标尺寸拆开定义。'},
+ {id:'UI-08',p:'P1',surface:'H5',title:'到底态文案过于贴近面板底部',img:'assets/issue-ui-08.png',caption:'同一面板底边口径：设计文字底→底边 51pt，实现 23pt。',evidence:'“到底了～”文字底→面板底设计约 51pt，实现约 23pt，少约 28pt；文字墨迹也由约 47×11 变为 53×14。',expect:'保持约 51pt 底部留白，并使用设计字号/行高。',fix:'把 end sentinel 纳入 scroll content 的固定 bottom padding；不要用 viewport bottom 直接定位。'},
+ {id:'UI-09',p:'P2',surface:'H5 · 深色',title:'深色面板背景未使用 Figma token',img:'assets/issue-ui-09.png',caption:'框选纯色面板内部采样区，设计 #222222，实现稳定为 #232323。',evidence:'设计 #222222；实现稳定采样 #232323，ΔRGB(+1,+1,+1)。',expect:'使用 panel_bg_white 深色值 #222222。',fix:'移除局部硬编码 #232323，绑定面板语义 token。'},
+ {id:'UI-10',p:'P1',surface:'H5 · 深色',title:'深色价格色 token 偏差明显',img:'assets/issue-ui-10.png',caption:'红框只覆盖现价文字区域；设计 #FF764D，实现核心像素约 #EE7F59。',evidence:'Figma orange100 #FF764D；实现核心像素约 #EE7F59，ΔE76 12.6。',expect:'现价使用 #FF764D；旧价使用对应灰色 token。',fix:'H5 价格组件改用统一 orange100，避免主题分支落到旧品牌橙。'},
+ {id:'UI-11',p:'P2',surface:'H5 · 深色',title:'深色分割线偏暗',img:'assets/issue-ui-11.png',caption:'放大并框选同一店铺分割线：设计 #3D3D3D，实现 #393939。',evidence:'Figma 渲染 #3D3D3D；实现 #393939，ΔRGB(-4,-4,-4)。',expect:'使用设计分割线/白色透明度 token。',fix:'将 divider 从硬编码灰改成 dark divider token。'},
+ {id:'UI-12',p:'P2',surface:'Nano · 深色',title:'深色消息卡与店卡表面各偏亮 1 RGB',img:'assets/issue-ui-12.png',caption:'双层红框分别标出外部消息卡和内部店卡的稳定纯色采样区域。',evidence:'消息卡 #202020→#212121；店卡 #2D2D2D→#2E2E2E。是稳定纯色采样，不是抗锯齿。',expect:'严格绑定 chat_card_bg 等设计 token。',fix:'去掉原生侧的近似色常量；从同一语义色表读取深色值。'},
+ {id:'UI-13',p:'P1',surface:'Nano · 深色',title:'CTA 深色底色合成结果不一致',img:'assets/issue-ui-13.png',caption:'框选 CTA 内部纯色区，对比设计合成值约 #323C5F 与实现 #353D5E。',evidence:'Figma rgba(66,110,255,.24) 叠加约 #323C5F；实现约 #353D5E，ΔE76 1.51。',expect:'按设计使用 qwen-purple-light 透明色或相同合成结果。',fix:'核对 CTA 父背景与 alpha 合成顺序；避免先转不透明近似色。'},
+ {id:'UI-14',p:'P1',surface:'H5',title:'商品图片框 86×86pt，设计为 82×82pt',img:'assets/issue-ui-14.png',caption:'红框按外部圆角图片容器测量，设计 82×82pt，实现约 86×86pt。',evidence:'实现商品图宽高均约 +4pt；重复列因此更拥挤并加重右侧裁切。',expect:'商品图外框 82×82pt，列 gap 12pt。',fix:'修正 tile size；图片 object-fit 仅影响内部内容，不要撑大外框。'},
+ {id:'UI-15',p:'P0',surface:'H5',title:'商品图片出现纯黑失败占位',img:'assets/issue-ui-15.png',caption:'红框紧贴第 4 个商品图片容器，内部为纯黑失败画面。',evidence:'IMG_3050、IMG_3051 首店铺第 4 个商品图片区域为纯黑色，与其他商品图及 Figma 均不一致。',expect:'资源成功展示；失败时使用设计占位图和可恢复加载策略，不显示黑块。',fix:'排查图片解码/URL/跨域与透明通道；为 onerror 和解码失败统一兜底。'},
+ {id:'UI-16',p:'P1',surface:'H5',title:'商品列从第 2 列起累计向右漂移',img:'assets/issue-ui-16.png',caption:'蓝线标出每列图片/标题/价格共同左边缘：设计 20/114/208/302，实现 20/119/218/317。',evidence:'设计列 pitch 94pt，实现约 99pt；第 2/3/4 列相对设计累计右移约 5/10/15pt。旧报告只检查首列和局部 gap，误判“列对齐 Pass”。',expect:'所有商品列按设计 94pt pitch 对齐，图片、标题、价格共享同一列左边。',fix:'将 tile 宽度恢复到 82pt，并把列 gap 固定为 12pt；按完整 pitch 验证而不是只看首列。'},
+ {id:'UI-17',p:'P1',surface:'H5',title:'右侧第 4 列内容被过度截断',img:'assets/issue-ui-17.png',caption:'端帽量取最后一列图片实际可见宽度：设计约 73pt，实现仅约 54pt。',evidence:'设计 82pt 图片隐藏约 9pt；实现 86pt 图片在 x≈371 的滚动裁切边界处隐藏约 32pt，多隐藏约 23pt，标题/价格也随列一起贴近裁切边。',expect:'保留设计的轻量“下一列露出”提示，但可见/隐藏比例应与 Figma 接近。',fix:'修正横向滚动容器 clip 边界与右侧 padding；在恢复 82pt tile/94pt pitch 后复测第 4 列可见宽度。'}
+];
+const KEY='flash-store-ui-review-rebuilt-v1';
+function renderIssues(){
+ const state=JSON.parse(localStorage.getItem(KEY)||'{}'); const root=document.getElementById('issueList'); root.innerHTML='';
+ issues.forEach(it=>{const s=state[it.id]||{};const el=document.createElement('article');el.className='issue-card '+((s.status||'待处理')==='忽略'?'ignored':'');el.dataset.priority=it.p;
+ el.innerHTML=`<div class="issue-head"><span class="badge">${it.p}</span><span class="mono">${it.id}</span><b>${it.title}</b><select aria-label="${it.id} 状态"><option>待处理</option><option>处理中</option><option>已修复</option><option>忽略</option></select></div><div class="issue-body"><figure class="issue-evidence"><img src="${it.img}" alt="${it.id} ${it.title} 标注证据"><figcaption><b>${it.id} 标注证据：</b>${it.caption}</figcaption></figure><div><p><b>范围：</b>${it.surface}</p><p><b>证据：</b>${it.evidence}</p><p><b>期望：</b>${it.expect}</p><p><b>修复方向：</b>${it.fix}</p></div><div><p><b>跟进备注</b></p><textarea placeholder="记录负责人、修复链接、复测结论…">${s.note||''}</textarea></div></div>`;
+ const sel=el.querySelector('select');sel.value=s.status||'待处理';sel.addEventListener('change',()=>{el.classList.toggle('ignored',sel.value==='忽略');saveOne(it.id,sel.value,el.querySelector('textarea').value)});el.querySelector('textarea').addEventListener('input',e=>saveOne(it.id,sel.value,e.target.value));root.appendChild(el);
+ });
+}
+function saveOne(id,status,note){const s=JSON.parse(localStorage.getItem(KEY)||'{}');s[id]={status,note};localStorage.setItem(KEY,JSON.stringify(s));document.getElementById('syncState').textContent='本地草稿 · 未同步';}
+function saveDraft(){document.getElementById('syncState').textContent='已保存到本机 · 未同步';}
+function exportJson(){const blob=new Blob([JSON.stringify({report:'flash-store-ui-review-rebuilt',savedAt:new Date().toISOString(),state:JSON.parse(localStorage.getItem(KEY)||'{}')},null,2)],{type:'application/json'});const a=document.createElement('a');a.href=URL.createObjectURL(blob);a.download='flash-store-ui-review-state.json';a.click();URL.revokeObjectURL(a.href)}
+function resetDraft(){if(confirm('清空本报告在当前浏览器的状态与备注？')){localStorage.removeItem(KEY);renderIssues();document.getElementById('syncState').textContent='本地草稿 · 未同步'}}
+const lb=document.getElementById('lightbox'),lbimg=lb.querySelector('img');document.addEventListener('click',e=>{if(e.target.matches('figure img')){lbimg.src=e.target.src;lb.classList.add('open')}if(e.target===lb||e.target===lb.querySelector('button'))lb.classList.remove('open')});document.addEventListener('keydown',e=>{if(e.key==='Escape')lb.classList.remove('open')});renderIssues();
+</script>
+</body>
+</html>
